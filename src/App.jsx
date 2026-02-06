@@ -13,7 +13,16 @@ function App() {
   return (
     <div className="font-display bg-background-light dark:bg-background-dark text-heading dark:text-white transition-colors duration-300 selection:bg-primary/30">
       <div className="noise-overlay"></div>
-      <div className="relative min-h-screen flex flex-col overflow-x-hidden pearlescent-bg">
+
+      {/* GLOBAL FIXED BACKGROUND LAYER */}
+      <div className="fixed inset-0 pearlescent-bg z-0 flex items-center justify-center overflow-hidden select-none pointer-events-none">
+        <h2 className="watermark-text text-[20vw] font-black text-gray-300 dark:text-gray-300 whitespace-nowrap transform scale-125">
+          OFZEN
+        </h2>
+      </div>
+
+      {/* SCROLLABLE CONTENT LAYER */}
+      <div className="relative min-h-screen flex flex-col overflow-x-hidden z-10">
         <Navbar />
         <Home />
         <Services />

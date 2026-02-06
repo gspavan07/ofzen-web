@@ -19,7 +19,7 @@ const Services = () => {
                     whileHover={{ y: -4 }}
                     className="md:col-span-8 glass-card rounded-xl p-8 flex flex-col justify-between overflow-hidden relative group"
                 >
-                    <div className="z-10">
+                    <div className="z-10 relative">
                         <span className="material-symbols-outlined text-4xl text-primary mb-4 block">language</span>
                         <h3 className="text-2xl font-bold mb-2 text-black">Web Development</h3>
                         <p className="text-subtext dark:text-gray-600 text-sm max-w-sm leading-relaxed">
@@ -41,36 +41,36 @@ const Services = () => {
                 {/* App Development (Tall/Square) */}
                 <motion.div
                     whileHover={{ y: -4 }}
-                    className="md:col-span-4 glass-card rounded-xl p-8 flex flex-col justify-between group"
+                    className="md:col-span-4 glass-card rounded-xl p-8 flex flex-col justify-between overflow-hidden relative group"
                 >
-                    <div>
+                    <div className="z-10 relative">
                         <span className="material-symbols-outlined text-4xl text-primary mb-4 block">smartphone</span>
-                        <h3 className="text-xl font-bold mb-2 text-black">App Development</h3>
+                        <h3 className="text-2xl font-bold mb-2 text-black">App Development</h3>
+                        <p className="text-subtext dark:text-gray-600 text-sm max-w-[200px] leading-relaxed">
+                            Native and cross-platform mobile solutions built for the next generation.
+                        </p>
                     </div>
-                    <div className="flex justify-center py-4">
+                    <div className="absolute top-8 right-8">
                         <img
                             alt="Mobile app UI 3D mockup"
                             className="w-24 h-24 object-contain"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoMTRA2EzOcZt1cVmWfgqqBH4_APqF9tz2A-rOE2OsP5tDzNkSLySEE3oZlxM5-gJ8jAKUTI1c_ruur_6xU2gLNCwumDj2CCIvs4pbl7VuZUlL30H6S6DKEU0OJC3d6tKciPr4jp27RfnFU-d1kgcELK2twFagfTTp2jBgi_bLN-7X9lD7ykoQ1Htybztjall0B5_cogzH8jRUQ_qaxhLhV5fn4oFcIfcB53mhhFwf7A-h-sy5dgn9TaYXZvdb1WxJQoth2NAJAFMU"
                         />
                     </div>
-                    <p className="text-subtext dark:text-gray-600 text-sm leading-relaxed">
-                        Native and cross-platform mobile solutions built for the next generation.
-                    </p>
                 </motion.div>
 
                 {/* Custom Software (Small Square) */}
                 <motion.div
                     whileHover={{ y: -4 }}
-                    className="md:col-span-4 glass-card rounded-xl p-8 flex flex-col justify-between group"
+                    className="md:col-span-4 glass-card rounded-xl p-8 flex flex-col justify-between relative group"
                 >
-                    <div>
+                    <div className="z-10 relative">
                         <span className="material-symbols-outlined text-4xl text-primary mb-4 block">terminal</span>
-                        <h3 className="text-xl font-bold mb-2 text-black">Custom Software</h3>
+                        <h3 className="text-2xl font-bold mb-2 text-black">Custom Software</h3>
+                        <p className="text-subtext dark:text-gray-600 text-sm leading-relaxed">
+                            Bespoke enterprise engines designed for complex operational requirements.
+                        </p>
                     </div>
-                    <p className="text-subtext dark:text-gray-600 text-sm leading-relaxed">
-                        Bespoke enterprise engines designed for complex operational requirements.
-                    </p>
                 </motion.div>
 
                 {/* UI/UX Design (Wide) */}
@@ -78,14 +78,14 @@ const Services = () => {
                     whileHover={{ y: -4 }}
                     className="md:col-span-5 glass-card rounded-xl p-8 flex flex-col justify-between overflow-hidden relative group"
                 >
-                    <div className="z-10">
+                    <div className="z-10 relative">
                         <span className="material-symbols-outlined text-4xl text-primary mb-4 block">potted_plant</span>
-                        <h3 className="text-xl font-bold mb-2 text-black">Design (UI/UX)</h3>
+                        <h3 className="text-2xl font-bold mb-2 text-black">Design (UI/UX)</h3>
                         <p className="text-subtext dark:text-gray-600 text-sm max-w-xs leading-relaxed">
                             Experience-first design thinking that blends aesthetics with functional clarity.
                         </p>
                     </div>
-                    <div className="absolute right-0 bottom-0 p-4">
+                    <div className="absolute top-8 right-8">
                         <img
                             alt="Glass UI components 3D"
                             className="w-24 h-24 object-contain opacity-100"
@@ -97,15 +97,15 @@ const Services = () => {
                 {/* Growth / SMM (Small) */}
                 <motion.div
                     whileHover={{ y: -4 }}
-                    className="md:col-span-3 glass-card rounded-xl p-8 flex flex-col justify-between group"
+                    className="md:col-span-3 glass-card rounded-xl p-8 flex flex-col justify-between relative group"
                 >
-                    <div>
+                    <div className="z-10 relative">
                         <span className="material-symbols-outlined text-4xl text-primary mb-4 block">insights</span>
-                        <h3 className="text-xl font-bold mb-2 text-black">SMM & Growth</h3>
+                        <h3 className="text-2xl font-bold mb-2 text-black">SMM & Growth</h3>
+                        <p className="text-subtext dark:text-gray-600 text-sm leading-relaxed">
+                            Data-driven strategy to scale your presence and conversion.
+                        </p>
                     </div>
-                    <p className="text-subtext dark:text-gray-600 text-sm leading-relaxed">
-                        Data-driven strategy to scale your presence and conversion.
-                    </p>
                 </motion.div>
             </div>
         </section>

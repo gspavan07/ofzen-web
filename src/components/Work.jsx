@@ -6,13 +6,13 @@ const projects = [
         title: "Quantum SaaS",
         category: "Enterprise Orchestration Platform",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3X35zZ5lpOt88JaYFO-8c6mZmI2mbMw1NzXQd7fsktG40KImMuc4FhrW9JdpneRd5d8i1iAPYogBu_71indpp6vhJN6HXWES4xokubmbssWz2KQUibpmBQSiv7NQ4dMcLB8jlrYjX87mlgvjAqFpbaBJxDaLdVB5xci1ltdrDhAVZLq12Oro1coC_ez0-5xiYCJM2MbRUsmMUtxwdA5TVYaSpQy8X07ajRoy1EsnFhmezR3wdgPiFePL6w88j_q81caukczIXYGS8",
-        width: "w-[300px] md:w-[480px]",
+        width: "w-[500px] md:w-[750px]",
     },
     {
         title: "Aura AI",
         category: "Neural Interaction",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeia5a7A6X7IO3uq0u2t1dpt3aMlU1A1Kq0we2Ka9xYJc5xhkOvZoqHLRwc7qAzYos6nEq82nZGhrESH2jG7bfTPVqnYNA1N6HUSpg1SHZ5zbfLN_3LaTqzzZEJAJpjtdZvvnNR1xsegE7QFd_LM-xjMLZj4frqrTezTITcbGovC24pdbmkmc7oqYsAg--CZEub9GMw4YUoRsNnZ4Wuvu8mfniAr8ULfzpl3YZ2ixHisKSkVvRb5J36Sg-hjjy-7FL4HBfgvOmDRKO",
-        width: "w-[240px] md:w-[320px]",
+        width: "w-[350px] md:w-[500px]",
         aspect: "aspect-[3/4]",
         isPortrait: true
     },
@@ -20,13 +20,13 @@ const projects = [
         title: "Luxe Commerce",
         category: "Digital Experience",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA8X29jXnrQ42KNad2uNXBGv2DyEK_Jnlx45gRQeRlfHN1YeJ5JUjCAi9o6fRm8gayInvBAiuP2REFop87YTNKSWEwgcY-PpVVDMkXJqohdFE2gylo8yZ-xgGjwMLK_VZYKMl8PaVGEUn9i9sZ-WN_Zd0gvmVTPZCoNtCxwTAIISGR6RsjSlhZ8AqbIDEuOD_Du2SP7XFcObA8Phf1YNlXai4PBTHT8c74Z7IO5i7exY0QL9uqJf0mQ6ZWvFvC-SJHjINXioOmp0Mjc",
-        width: "w-[300px] md:w-[480px]",
+        width: "w-[500px] md:w-[750px]",
     },
     {
         title: "Eco Flow",
         category: "Sustainability Dashboard",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDt3hoH7beht8VmEch3ibONIzOL6WuMVegFGJU_Qw0IZ-c69C6MqjSCZ4OevZ-6yoo5nFbpkUVULCszfvBPJaOH-OJuXplHytdui1cUfkHjI-mEIcGk--4Y_Io56B-3bRlvCsTHagxNSlF3NZefa9A9n0JteM7XnY6b573ziTODL-UgeIIfkzXrQRkwOTJ7gmZn-NYKAUruD7ID23ayiRgQRxF9_Qqazq5O6th-PZXoUp0Dp8uwKyeh9LRJSkDsAbIg_BAQuQyJNH1_",
-        width: "w-[300px] md:w-[480px]",
+        width: "w-[500px] md:w-[750px]",
     }
 ];
 
@@ -77,32 +77,35 @@ const Work = () => {
             <div className="relative w-full group mb-12">
                 <div
                     ref={containerRef}
-                    className="flex overflow-x-auto hide-scrollbar px-10 gap-8 md:gap-12 pb-8 cursor-grab active:cursor-grabbing snap-x snap-proximity"
+                    className="flex overflow-x-auto hide-scrollbar px-10 gap-8 md:gap-12 pt-12 pb-12 cursor-grab active:cursor-grabbing snap-x snap-proximity"
                 >
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
-                            className={`flex-none ${project.width} snap-center`}
+                            className={`flex-none ${project.width} snap-center group/card`}
                             whileHover={{ y: -8 }}
                             transition={{ type: "spring", stiffness: 400, damping: 25 }}
                         >
                             <div className={`relative glass-card ${project.isPortrait ? 'rounded-[2rem]' : 'rounded-2xl'} p-2 md:p-3 shadow-xl overflow-hidden ${project.aspect || 'aspect-video'}`}>
-                                <div className={`w-full h-full ${project.isPortrait ? 'rounded-[1.6rem]' : 'rounded-xl'} overflow-hidden relative bg-black/5`}>
+                                <div className={`w-full h-full ${project.isPortrait ? 'rounded-[1.6rem]' : 'rounded-xl'} overflow-hidden relative bg-black/5 group-hover/card:shadow-inner transition-all duration-500`}>
                                     <img
                                         src={project.image}
                                         alt={project.title}
-                                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-110"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none opacity-60 group-hover/card:opacity-40 transition-opacity duration-500" />
+
+                                    {/* Shine Effect */}
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover/card:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none z-10" />
                                 </div>
                             </div>
-                            <div className="mt-6 px-2 flex justify-between items-start">
+                            <div className="mt-8 px-2 flex justify-between items-start">
                                 <div>
-                                    <h3 className="text-xl md:text-2xl font-bold text-black leading-tight">{project.title}</h3>
-                                    <p className="text-subtext dark:text-gray-600 text-sm font-medium mt-1 uppercase tracking-wider">{project.category}</p>
+                                    <h3 className="text-xl md:text-3xl font-bold text-black leading-tight group-hover/card:text-primary transition-colors">{project.title}</h3>
+                                    <p className="text-subtext dark:text-gray-600 text-sm font-medium mt-2 uppercase tracking-wider">{project.category}</p>
                                 </div>
-                                <button className="size-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                                    <span className="material-symbols-outlined text-xl">arrow_outward</span>
+                                <button className="size-12 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover/card:bg-primary group-hover/card:text-white transition-all duration-300">
+                                    <span className="material-symbols-outlined text-2xl">arrow_outward</span>
                                 </button>
                             </div>
                         </motion.div>
@@ -165,7 +168,7 @@ const Work = () => {
                 {[
                     { title: "Design Systems", icon: "widgets" },
                     { title: "Technical R&D", icon: "biotech" },
-                    { title: "Brand Identity", icon: "AutoGraph" }
+                    { title: "Brand Identity", icon: "diamond" }
                 ].map((item, i) => (
                     <div key={i} className="flex flex-col gap-4 group">
                         <div className="size-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">

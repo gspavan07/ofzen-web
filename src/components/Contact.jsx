@@ -144,7 +144,8 @@ const Contact = () => {
                             <span className="text-primary italic font-serif">Leap?</span>
                         </h2>
                         <p className="text-xl text-subtext dark:text-gray-500 mb-12 max-w-sm font-medium">
-                            Join the next generation of Silicon Valley pioneers. Let's build the future together.
+                            Build smarter. Launch faster.
+                            Start your journey with OfZen.
                         </p>
                         <div className="flex gap-8 text-xs font-black uppercase tracking-[0.3em] text-primary/60">
                             <a className="hover:text-primary transition-colors cursor-pointer" href="#">LinkedIn</a>
