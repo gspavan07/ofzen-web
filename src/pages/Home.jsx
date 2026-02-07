@@ -113,10 +113,10 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="fixed bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40 z-30 pointer-events-none">
+            {/* <div className="fixed bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40 z-30 pointer-events-none">
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-heading">Explore</span>
                 <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"></div>
-            </div>
+            </div> */}
         </section>
     );
 };

@@ -218,7 +218,7 @@ const About = () => {
                         <div className="w-full lg:w-[420px] glass-card rounded-3xl p-8 lg:p-10 relative overflow-hidden shadow-2xl z-[90]">
                             {/* Watermark */}
                             <div className="absolute top-0 right-0 p-4">
-                                <span className="text-[60px] font-black text-primary/5 select-none leading-none">
+                                <span className="text-[60px] font-black text-primary/10 select-none leading-none">
                                     {(activeIndex + 1).toString().padStart(2, '0')}
                                 </span>
                             </div>
@@ -237,7 +237,7 @@ const About = () => {
                                     <h3 className="text-3xl font-black mb-4 flex items-center gap-3">
                                         <span className="text-accent-fire">{steps[activeIndex].title}</span>
                                     </h3>
-                                    <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
+                                    <p className="text-gray-500 dark:text-gray-600 leading-relaxed mb-8">
                                         {steps[activeIndex].desc}
                                     </p>
                                     <motion.ul
@@ -259,7 +259,7 @@ const About = () => {
                                                 transition={{ duration: 0.3, ease: "easeOut" }}
                                             >
                                                 <span className="material-symbols-outlined text-sunset-pink text-xl">check_circle</span>
-                                                <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">{point}</span>
+                                                <span className="text-sm font-semibold text-gray-600 dark:text-gray-600">{point}</span>
                                             </motion.li>
                                         ))}
                                     </motion.ul>
@@ -277,7 +277,7 @@ const About = () => {
 
             {/* 3. POST-ORBIT TRANSITION - Ensure seamless flow */}
             <div className="relative z-20 silk-texture pt-12 pb-32">
-                <div className="max-w-[1400px] mx-auto px-4 lg:px-8">
+                <div className="max-w-[1420px] mx-auto px-4 lg:px-4">
                     {/* Quote Section Container */}
                     <div className="relative overflow-hidden rounded-[3rem] py-32 px-10 shadow-2xl glass-quote-bg">
                         {/* Design Watermark */}
@@ -297,7 +297,7 @@ const About = () => {
                             </span>
                         </div>
 
-                        <div className="relative z-20 max-w-4xl mx-auto text-center mt-12">
+                        <div className="relative z-20 max-w-5xl mx-auto text-center mt-12">
                             <h2 className="font-serif italic text-4xl md:text-7xl leading-[1.3] text-heading dark:text-heading mb-16 tracking-tight" style={{ fontFamily: '"Playfair Display", serif', fontWeight: 900 }}>
                                 "Design is not just what it looks like; it's how it <span className="relative inline-block text-accent-fire not-italic font-black mx-1">
                                     accelerates

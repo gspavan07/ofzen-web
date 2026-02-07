@@ -84,7 +84,7 @@ const FAQItem = ({ faq }) => {
 
 const Contact = () => {
     return (
-        <section id="contact" className="relative w-full overflow-hidden">
+        <section className="relative w-full overflow-hidden">
             {/* Testimonials */}
             <div className="max-w-[1200px] mx-auto px-4 lg:px-40 py-24">
                 <h2 className="text-4xl md:text-[56px] font-black tracking-tighter text-center mb-20 text-heading">
@@ -136,7 +136,7 @@ const Contact = () => {
             </div>
 
             {/* Contact Form Section */}
-            <div className="max-w-[1200px] mx-auto px-4 lg:px-40 py-32 relative">
+            <div id="contact" className="max-w-[1200px] mx-auto px-4 lg:px-40 py-32 relative">
                 <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-16 relative z-10">
                     <div className="flex-1">
                         <h2 className="text-[64px] md:text-[84px] font-black leading-[0.9] tracking-tighter mb-8 text-heading ">
@@ -161,7 +161,7 @@ const Contact = () => {
                                 <label className="text-[10px] uppercase tracking-[0.3em] font-black text-primary mb-2 block">Full Name</label>
                                 <input
                                     type="text"
-                                    className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-white placeholder:text-subtext/30 transition-all font-bold"
+                                    className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-black placeholder:text-subtext/30 transition-all font-bold"
                                     placeholder="John Doe"
                                 />
                             </div>
@@ -169,7 +169,7 @@ const Contact = () => {
                                 <label className="text-[10px] uppercase tracking-[0.3em] font-black text-primary mb-2 block">Email Address</label>
                                 <input
                                     type="email"
-                                    className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-white placeholder:text-subtext/30 transition-all font-bold"
+                                    className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-black placeholder:text-subtext/30 transition-all font-bold"
                                     placeholder="john@future.com"
                                 />
                             </div>
@@ -177,7 +177,7 @@ const Contact = () => {
                                 <label className="text-[10px] uppercase tracking-[0.3em] font-black text-primary mb-2 block">Message</label>
                                 <textarea
                                     rows="3"
-                                    className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-white placeholder:text-subtext/30 transition-all font-bold resize-none"
+                                    className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-black placeholder:text-subtext/30 transition-all font-bold resize-none"
                                     placeholder="Tell us about your vision..."
                                 />
                             </div>
@@ -195,6 +195,14 @@ const Contact = () => {
 
                 {/* Background Decorative Gradient */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-primary/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+                {/* Scroll to Top Button */}
+                <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="absolute bottom-10 right-10 z-[60] size-14 rounded-full glass-nav flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-2xl group active:scale-95 cursor-pointer"
+                >
+                    <span className="material-symbols-outlined text-3xl transition-transform group-hover:-translate-y-1">north</span>
+                </button>
             </div>
         </section>
     );

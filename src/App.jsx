@@ -1,39 +1,28 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import Home from './pages/Home'
-import Services from './components/Services'
-import TechStack from './components/TechStack'
-import Work from './components/Work'
-import About from './components/About'
-import Contact from './components/Contact'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import MainPage from './pages/MainPage';
+import ProjectDetails from './pages/ProjectDetails';
 
+const AppContent = () => {
+    const location = useLocation();
 
-function App() {
-  return (
-    <div className="font-display bg-background-light dark:bg-background-dark text-heading dark:text-white transition-colors duration-300 selection:bg-primary/30">
-      <div className="noise-overlay"></div>
+    return (
+        <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<MainPage />} />
+                <Route path="/project/:id" element={<ProjectDetails />} />
+            </Routes>
+        </AnimatePresence>
+    );
+};
 
-      {/* GLOBAL FIXED BACKGROUND LAYER */}
-      <div className="fixed inset-0 pearlescent-bg z-0 flex items-center justify-center overflow-hidden select-none pointer-events-none">
-        <h2 className="watermark-text text-[20vw] font-black text-gray-300 dark:text-gray-300 whitespace-nowrap transform scale-125">
-          OFZEN
-        </h2>
-      </div>
+const App = () => {
+    return (
+        <Router>
+            <AppContent />
+        </Router>
+    );
+};
 
-      {/* SCROLLABLE CONTENT LAYER */}
-      <div className="relative min-h-screen flex flex-col overflow-x-hidden z-10">
-        <Navbar />
-        <Home />
-        <Services />
-        <TechStack />
-        <Work />
-        <About />
-        <Contact />
-        <Footer />
-      </div>
-    </div>
-  )
-}
-
-export default App
+export default App;

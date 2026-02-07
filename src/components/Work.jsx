@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const projects = [
     {
@@ -12,7 +13,7 @@ const projects = [
         title: "Aura AI",
         category: "Neural Interaction",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeia5a7A6X7IO3uq0u2t1dpt3aMlU1A1Kq0we2Ka9xYJc5xhkOvZoqHLRwc7qAzYos6nEq82nZGhrESH2jG7bfTPVqnYNA1N6HUSpg1SHZ5zbfLN_3LaTqzzZEJAJpjtdZvvnNR1xsegE7QFd_LM-xjMLZj4frqrTezTITcbGovC24pdbmkmc7oqYsAg--CZEub9GMw4YUoRsNnZ4Wuvu8mfniAr8ULfzpl3YZ2ixHisKSkVvRb5J36Sg-hjjy-7FL4HBfgvOmDRKO",
-        width: "w-[350px] md:w-[500px]",
+        width: "w-[300px] md:w-[500px]",
         aspect: "aspect-[3/4]",
         isPortrait: true
     },
@@ -31,6 +32,7 @@ const projects = [
 ];
 
 const Work = () => {
+    const navigate = useNavigate();
     const containerRef = useRef(null);
     const [percent, setPercent] = useState(0);
 
@@ -74,17 +76,18 @@ const Work = () => {
             </div>
 
             {/* Horizontal Gallery */}
-            <div className="relative w-full group mb-12">
+            <div className="relative w-full group mb-4">
                 <div
                     ref={containerRef}
-                    className="flex overflow-x-auto hide-scrollbar px-10 gap-8 md:gap-12 pt-12 pb-12 cursor-grab active:cursor-grabbing snap-x snap-proximity"
+                    className="flex overflow-x-auto hide-scrollbar px-10 gap-8 md:gap-12 pt-8 pb-4 cursor-grab active:cursor-grabbing snap-x snap-proximity"
                 >
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
-                            className={`flex-none ${project.width} snap-center group/card`}
+                            className={`flex-none ${project.width} snap-center group/card cursor-pointer`}
                             whileHover={{ y: -8 }}
                             transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                            onClick={() => navigate(`/project/${index}`)}
                         >
                             <div className={`relative glass-card ${project.isPortrait ? 'rounded-[2rem]' : 'rounded-2xl'} p-2 md:p-3 shadow-xl overflow-hidden ${project.aspect || 'aspect-video'}`}>
                                 <div className={`w-full h-full ${project.isPortrait ? 'rounded-[1.6rem]' : 'rounded-xl'} overflow-hidden relative bg-black/5 group-hover/card:shadow-inner transition-all duration-500`}>
@@ -99,7 +102,7 @@ const Work = () => {
                                     <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover/card:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none z-10" />
                                 </div>
                             </div>
-                            <div className="mt-8 px-2 flex justify-between items-start">
+                            <div className="mt-4 px-2 flex justify-between items-start">
                                 <div>
                                     <h3 className="text-xl md:text-3xl font-bold text-black leading-tight group-hover/card:text-primary transition-colors">{project.title}</h3>
                                     <p className="text-subtext dark:text-gray-600 text-sm font-medium mt-2 uppercase tracking-wider">{project.category}</p>
@@ -116,7 +119,7 @@ const Work = () => {
 
             {/* Progress & Drag Explorer */}
             <div className="max-w-7xl mx-auto px-10">
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-2">
                     <div className="flex justify-between items-end">
                         <div className="flex flex-col gap-1">
                             <span className="text-[10px] font-bold text-subtext uppercase tracking-widest">Navigator</span>
