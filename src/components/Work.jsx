@@ -7,13 +7,13 @@ const projects = [
         title: "Quantum SaaS",
         category: "Enterprise Orchestration Platform",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3X35zZ5lpOt88JaYFO-8c6mZmI2mbMw1NzXQd7fsktG40KImMuc4FhrW9JdpneRd5d8i1iAPYogBu_71indpp6vhJN6HXWES4xokubmbssWz2KQUibpmBQSiv7NQ4dMcLB8jlrYjX87mlgvjAqFpbaBJxDaLdVB5xci1ltdrDhAVZLq12Oro1coC_ez0-5xiYCJM2MbRUsmMUtxwdA5TVYaSpQy8X07ajRoy1EsnFhmezR3wdgPiFePL6w88j_q81caukczIXYGS8",
-        width: "w-[500px] md:w-[750px]",
+        width: "w-[85vw] md:w-[750px]",
     },
     {
         title: "Aura AI",
         category: "Neural Interaction",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeia5a7A6X7IO3uq0u2t1dpt3aMlU1A1Kq0we2Ka9xYJc5xhkOvZoqHLRwc7qAzYos6nEq82nZGhrESH2jG7bfTPVqnYNA1N6HUSpg1SHZ5zbfLN_3LaTqzzZEJAJpjtdZvvnNR1xsegE7QFd_LM-xjMLZj4frqrTezTITcbGovC24pdbmkmc7oqYsAg--CZEub9GMw4YUoRsNnZ4Wuvu8mfniAr8ULfzpl3YZ2ixHisKSkVvRb5J36Sg-hjjy-7FL4HBfgvOmDRKO",
-        width: "w-[300px] md:w-[500px]",
+        width: "w-[70vw] md:w-[500px]",
         aspect: "aspect-[3/4]",
         isPortrait: true
     },
@@ -21,13 +21,13 @@ const projects = [
         title: "Luxe Commerce",
         category: "Digital Experience",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA8X29jXnrQ42KNad2uNXBGv2DyEK_Jnlx45gRQeRlfHN1YeJ5JUjCAi9o6fRm8gayInvBAiuP2REFop87YTNKSWEwgcY-PpVVDMkXJqohdFE2gylo8yZ-xgGjwMLK_VZYKMl8PaVGEUn9i9sZ-WN_Zd0gvmVTPZCoNtCxwTAIISGR6RsjSlhZ8AqbIDEuOD_Du2SP7XFcObA8Phf1YNlXai4PBTHT8c74Z7IO5i7exY0QL9uqJf0mQ6ZWvFvC-SJHjINXioOmp0Mjc",
-        width: "w-[500px] md:w-[750px]",
+        width: "w-[85vw] md:w-[750px]",
     },
     {
         title: "Eco Flow",
         category: "Sustainability Dashboard",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDt3hoH7beht8VmEch3ibONIzOL6WuMVegFGJU_Qw0IZ-c69C6MqjSCZ4OevZ-6yoo5nFbpkUVULCszfvBPJaOH-OJuXplHytdui1cUfkHjI-mEIcGk--4Y_Io56B-3bRlvCsTHagxNSlF3NZefa9A9n0JteM7XnY6b573ziTODL-UgeIIfkzXrQRkwOTJ7gmZn-NYKAUruD7ID23ayiRgQRxF9_Qqazq5O6th-PZXoUp0Dp8uwKyeh9LRJSkDsAbIg_BAQuQyJNH1_",
-        width: "w-[500px] md:w-[750px]",
+        width: "w-[85vw] md:w-[750px]",
     }
 ];
 
@@ -69,7 +69,7 @@ const Work = () => {
             <div className="max-w-7xl mx-auto px-10 mb-12">
                 <div className="flex flex-col gap-2">
                     <p className="text-primary font-bold tracking-[0.2em] text-[10px] uppercase">Portfolio 2026</p>
-                    <h1 className="text-heading  text-5xl md:text-6xl font-black tracking-tighter">
+                    <h1 className="text-heading text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter">
                         Selected Work
                     </h1>
                 </div>
@@ -104,7 +104,7 @@ const Work = () => {
                             </div>
                             <div className="mt-4 px-2 flex justify-between items-start">
                                 <div>
-                                    <h3 className="text-xl md:text-3xl font-bold text-black leading-tight group-hover/card:text-primary transition-colors">{project.title}</h3>
+                                    <h3 className="text-lg md:text-3xl font-bold text-black leading-tight group-hover/card:text-primary transition-colors">{project.title}</h3>
                                     <p className="text-subtext dark:text-gray-600 text-sm font-medium mt-2 uppercase tracking-wider">{project.category}</p>
                                 </div>
                                 <button className="size-12 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover/card:bg-primary group-hover/card:text-white transition-all duration-300">
@@ -129,7 +129,7 @@ const Work = () => {
                             </div>
                         </div>
                         <div className="text-right">
-                            <span className="text-4xl font-black text-primary tabular-nums tracking-tighter">{Math.round(percent)}%</span>
+                            <span className="text-2xl md:text-4xl font-black text-primary tabular-nums tracking-tighter">{Math.round(percent)}%</span>
                         </div>
                     </div>
 

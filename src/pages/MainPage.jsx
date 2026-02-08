@@ -11,12 +11,17 @@ import { motion } from 'framer-motion';
 
 const MainPage = () => {
     return (
-        <div className="relative w-full">
+        <div className="relative w-full overflow-x-hidden">
             {/* Global Background Watermark */}
-            <div className="fixed inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
-                <span className="text-[25vw] font-black text-black/2 dark:text-gray-300 leading-none tracking-tighter uppercase watermark-text select-none">
+            <div className="fixed inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden w-screen h-screen">
+                <motion.span
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    className="text-[20vw] md:text-[25vw] font-black text-black/2 dark:text-gray-300 leading-none tracking-tighter uppercase watermark-text select-none"
+                >
                     OFZEN
-                </span>
+                </motion.span>
             </div>
 
             <Navbar />

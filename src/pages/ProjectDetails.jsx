@@ -36,14 +36,14 @@ const ProjectSlide = ({ project }) => {
             <div className="silk-texture absolute inset-0 pointer-events-none opacity-40" />
 
             {/* Project Content Container */}
-            <div className="max-w-[1400px] mx-auto pt-36 pb-64 px-10 relative z-10">
+            <div className="max-w-[1400px] mx-auto pt-24 md:pt-36 pb-32 md:pb-64 px-6 md:px-10 relative z-10">
 
                 {/* Header (Top Centered) */}
-                <div className="text-center mb-12">
+                <div className="text-center mb-12 md:mb-20">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-7xl md:text-[100px] font-black tracking-tighter text-heading leading-[0.9]"
+                        className="text-3xl md:text-7xl lg:text-[100px] font-black tracking-tighter text-heading leading-[0.9]"
                     >
                         {project.title}
                     </motion.h1>
@@ -51,64 +51,63 @@ const ProjectSlide = ({ project }) => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-xl md:text-2xl text-subtext dark:text-gray-400 mt-6 max-w-2xl mx-auto font-medium"
+                        className="text-lg md:text-xl lg:text-2xl text-subtext dark:text-gray-400 mt-4 md:mt-6 max-w-2xl mx-auto font-medium"
                     >
                         {project.description}
                     </motion.p>
                 </div>
 
                 {/* Z-Pattern Content sections */}
-                <div className="flex flex-col gap-48">
+                <div className="flex flex-col gap-16 md:gap-48">
                     {/* Section 1: Image Left, Desc Right */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-                        <div className="rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/3] bg-black/5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
+                        <div className="rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-[4/3] bg-black/5">
                             <img src={project.image} alt="Process" className="w-full h-full object-cover" />
                         </div>
-                        <div className="flex flex-col gap-6">
-                            <h3 className="text-4xl font-black text-heading">The Vision</h3>
-                            <p className="text-lg text-subtext leading-relaxed">
+                        <div className="flex flex-col gap-4 md:gap-6">
+                            <h3 className="text-xl md:text-4xl font-black text-heading">The Vision</h3>
+                            <p className="text-sm md:text-lg text-subtext leading-relaxed">
                                 Our collaborative approach starts by uncovering the core values of your mission. We deep-dive into the technical requirements to ensure every pixel serves a strategic purpose.
-                                This project represents the pinnacle of our design-driven engineering philosophy.
                             </p>
                         </div>
                     </div>
 
                     {/* Section 2: Desc Left, Image Right */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-                        <div className="order-2 md:order-1 flex flex-col gap-6">
-                            <h3 className="text-4xl font-black text-heading">The Impact</h3>
-                            <p className="text-lg text-subtext leading-relaxed">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
+                        <div className="order-2 md:order-1 flex flex-col gap-4 md:gap-6">
+                            <h3 className="text-xl md:text-4xl font-black text-heading">The Impact</h3>
+                            <p className="text-sm md:text-lg text-subtext leading-relaxed">
                                 Implementing advanced neural networks allowed for a 40% increase in user retention.
-                                The aesthetic clarity of the interface ensures complex data streams remain intuitive and actionable for high-stake decision makers.
+                                The aesthetic clarity of the interface ensures complex data streams remain intuitive.
                             </p>
                         </div>
-                        <div className="order-1 md:order-2 rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/3] bg-black/5">
+                        <div className="order-1 md:order-2 rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-[4/3] bg-black/5">
                             <img src={project.image} alt="Impact" className="w-full h-full object-cover" />
                         </div>
                     </div>
 
                     {/* Section 3: Image Left, Desc Right */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-                        <div className="rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/3] bg-black/5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
+                        <div className="rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-[4/3] bg-black/5">
                             <img src={project.image} alt="Future" className="w-full h-full object-cover" />
                         </div>
-                        <div className="flex flex-col gap-6">
-                            <h3 className="text-4xl font-black text-heading">Scalability</h3>
-                            <p className="text-lg text-subtext leading-relaxed">
-                                Built on a global microservices architecture, the platform scales horizontally to support millions of concurrent connections while maintaining sub-50ms latency globally.
+                        <div className="flex flex-col gap-4 md:gap-6">
+                            <h3 className="text-xl md:text-4xl font-black text-heading">Scalability</h3>
+                            <p className="text-sm md:text-lg text-subtext leading-relaxed">
+                                Built on a global microservices architecture, the platform scales horizontally to support millions of concurrent connections globally.
                             </p>
                         </div>
                     </div>
 
                     {/* Section 4: Desc Left, Image Right */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-                        <div className="order-2 md:order-1 flex flex-col gap-6">
-                            <h3 className="text-4xl font-black text-heading">Ecosystem Integration</h3>
-                            <p className="text-lg text-subtext leading-relaxed">
-                                Seamlessly connecting with existing infrastructure, our solution ensures that data flow is unified across all touchpoints. We prioritize interoperability to create a frictionless experience for both developers and end-users alike.
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
+                        <div className="order-2 md:order-1 flex flex-col gap-4 md:gap-6">
+                            <h3 className="text-xl md:text-4xl font-black text-heading">Integration</h3>
+                            <p className="text-sm md:text-lg text-subtext leading-relaxed">
+                                Seamlessly connecting with existing infrastructure, our solution ensures that data flow is unified across all touchpoints for everyone.
                             </p>
                         </div>
-                        <div className="order-1 md:order-2 rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/3] bg-black/5">
+                        <div className="order-1 md:order-2 rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-[4/3] bg-black/5">
                             <img src={project.image} alt="Integration" className="w-full h-full object-cover" />
                         </div>
                     </div>
@@ -153,12 +152,12 @@ const ProjectDetails = () => {
             </div>
 
             {/* TOP NAVIGATION: Project Toggle Bar */}
-            <div className="fixed top-10 left-1/2 -translate-x-1/2 z-[110] flex items-center gap-2 p-1.5 glass-nav rounded-2xl shadow-xl">
+            <div className="fixed top-2 md:top-10 left-1/2 -translate-x-1/2 z-[110] flex items-center gap-1.5 p-1 glass-nav rounded-2xl shadow-xl max-w-[calc(100vw-120px)] md:max-w-[90vw] overflow-x-auto hide-scrollbar">
                 {projects.map((p, i) => (
                     <button
                         key={p.id}
                         onClick={() => handleSwitch(i)}
-                        className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${i === currentIndex
+                        className={`px-3 md:px-6 py-1.5 md:py-2 rounded-xl text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all duration-300 whitespace-nowrap ${i === currentIndex
                             ? 'bg-primary text-white shadow-lg'
                             : 'text-heading/40 hover:text-heading hover:bg-white/50'
                             }`}
@@ -168,19 +167,19 @@ const ProjectDetails = () => {
                 ))}
             </div>
 
-            {/* Back button */}
-            <div className="fixed top-10 left-10 z-[110]">
+            {/* Home button */}
+            <div className="fixed top-2 md:top-10 left-3 md:left-10 z-[110]">
                 <button
                     onClick={() => navigate('/')}
-                    className="size-14 rounded-full glass-nav flex items-center justify-center text-heading hover:bg-primary hover:text-white transition-all duration-300"
+                    className="size-8 md:size-14 rounded-full glass-nav flex items-center justify-center text-primary transition-all duration-300 hover:bg-primary hover:text-white"
                 >
-                    <span className="material-symbols-outlined">close</span>
+                    <span className="material-symbols-outlined text-base md:text-2xl">home</span>
                 </button>
             </div>
 
-            {/* SIDE NAVIGATION: Arrows */}
+            {/* SIDE NAVIGATION: Arrows (Desktop Only) */}
             {currentIndex > 0 && (
-                <div className="fixed left-10 top-1/2 -translate-y-1/2 z-[110]">
+                <div className="fixed left-10 top-1/2 -translate-y-1/2 z-[110] hidden md:flex">
                     <button
                         onClick={() => handleSwitch(currentIndex - 1)}
                         className="size-16 rounded-full glass-nav flex items-center justify-center text-heading hover:bg-primary hover:text-white transition-all duration-500 shadow-2xl group active:scale-90"
@@ -191,7 +190,7 @@ const ProjectDetails = () => {
             )}
 
             {currentIndex < projects.length - 1 && (
-                <div className="fixed right-10 top-1/2 -translate-y-1/2 z-[110]">
+                <div className="fixed right-10 top-1/2 -translate-y-1/2 z-[110] hidden md:flex">
                     <button
                         onClick={() => handleSwitch(currentIndex + 1)}
                         className="size-16 rounded-full glass-nav flex items-center justify-center text-heading hover:bg-primary hover:text-white transition-all duration-500 shadow-2xl group active:scale-90"
@@ -210,6 +209,18 @@ const ProjectDetails = () => {
                     exit={{ x: "-100%", opacity: 0 }}
                     transition={{ type: "spring", stiffness: 100, damping: 20 }}
                     className="absolute inset-0"
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.2}
+                    onDragEnd={(e, { offset, velocity }) => {
+                        const swipe = offset.x;
+                        const threshold = 50;
+                        if (swipe < -threshold && currentIndex < projects.length - 1) {
+                            handleSwitch(currentIndex + 1);
+                        } else if (swipe > threshold && currentIndex > 0) {
+                            handleSwitch(currentIndex - 1);
+                        }
+                    }}
                 >
                     <ProjectSlide project={projects[currentIndex]} />
                 </motion.div>

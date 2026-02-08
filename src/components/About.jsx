@@ -77,7 +77,7 @@ const OrbitItem = ({ step, index, activeIndex }) => {
                     </span>
                 </div>
                 <div className="text-center pb-8 min-w-[120px]">
-                    <p className={`font-black transition-all duration-700 ease-out tracking-tight leading-none mb-1 ${isActive ? 'text-2xl bg-clip-text text-transparent bg-gradient-to-r from-accent-fire to-sunset-pink' : 'text-xl text-heading dark:text-white'}`}>
+                    <p className={`font-black transition-all duration-700 ease-out tracking-tight leading-none mb-1 ${isActive ? 'text-lg sm:text-2xl bg-clip-text text-transparent bg-gradient-to-r from-accent-fire to-sunset-pink' : 'text-base sm:text-xl text-heading dark:text-white'}`}>
                         {step.title}
                     </p>
                     <p className="text-[10px] uppercase tracking-widest font-bold text-primary/40">Phase {step.id}</p>
@@ -147,7 +147,7 @@ const About = () => {
             <div className="pt-24 px-4 lg:px-40 pb-0 overflow-hidden">
                 <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-end gap-6">
                     <div className="max-w-xl text-heading">
-                        <h1 className="text-4xl md:text-6xl font-black leading-tight tracking-tight mb-4">The Ofzen Way</h1>
+                        <h1 className="text-3xl md:text-6xl font-black leading-tight tracking-tight mb-4">The Ofzen Way</h1>
                         <p className="text-gray-700 dark:text-gray-600 text-lg font-normal leading-relaxed">
                             Scroll to rotate through our 8-phase methodology. Each scroll step advances the orbital system.
                         </p>
@@ -298,7 +298,7 @@ const About = () => {
                         </div>
 
                         <div className="relative z-20 max-w-5xl mx-auto text-center mt-12">
-                            <h2 className="font-serif italic text-4xl md:text-7xl leading-[1.3] text-heading dark:text-heading mb-16 tracking-tight" style={{ fontFamily: '"Playfair Display", serif', fontWeight: 900 }}>
+                            <h2 className="font-serif italic text-2xl sm:text-4xl md:text-7xl leading-[1.3] text-heading dark:text-heading mb-16 tracking-tight" style={{ fontFamily: '"Playfair Display", serif', fontWeight: 900 }}>
                                 "Design is not just what it looks like; it's how it <span className="relative inline-block text-accent-fire not-italic font-black mx-1">
                                     accelerates
                                     <span className="absolute -bottom-3 left-0 w-full h-1.5 bg-accent-fire/20 rounded-full"></span>
@@ -319,29 +319,29 @@ const About = () => {
                 <div className="max-w-[1400px] mx-auto px-4 lg:px-48 mt-48">
                     <div className="mb-20 flex flex-col gap-4">
                         <p className="text-primary font-black uppercase tracking-[0.4em] text-xs">Our Collective</p>
-                        <h3 className="text-5xl md:text-6xl font-black text-heading tracking-tighter">The Minds Behind</h3>
+                        <h3 className="text-3xl sm:text-5xl md:text-6xl font-black text-heading tracking-tighter">The Minds Behind</h3>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 lg:gap-10">
                         {team.map((member, i) => (
                             <motion.div
                                 key={i}
                                 whileHover={{ y: -12 }}
-                                className="group relative bg-white dark:bg-[#151b29] rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(19,91,236,0.2)] dark:hover:shadow-[0_20px_60px_rgba(19,91,236,0.15)]"
+                                className="group relative bg-white dark:bg-[#151b29] rounded-2xl lg:rounded-[2.5rem] overflow-hidden border border-gray-100 border-white/10 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(19,91,236,0.2)]"
                             >
-                                <div className="aspect-[3/4] w-full overflow-hidden bg-gray-200 dark:bg-gray-700">
-                                    <img src={member.image} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+                                <div className="aspect-[3/4] w-full overflow-hidden">
+                                    <img src={member.image} alt={member.name} className="w-full h-full object-cover lg:grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
                                 </div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 lg:p-7">
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-2 lg:p-7">
                                     <div className="text-white">
-                                        <h4 className="text-2xl lg:text-3xl font-black mb-2 leading-tight">{member.name}</h4>
-                                        <p className="text-primary font-black text-[10px] mb-5 uppercase tracking-widest">{member.role}</p>
-                                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
-                                            <p className="text-gray-200 text-sm leading-relaxed mb-6 font-medium">{member.desc}</p>
-                                            <div className="flex gap-4">
+                                        <h4 className="text-md sm:text-2xl lg:text-3xl font-black mb-1 md:mb-2 leading-tight">{member.name}</h4>
+                                        <p className="text-[8px] sm:text-lg lg:text-[16px] font-black text-[#135bec] lg:mb-5 uppercase tracking-widest">{member.role}</p>
+                                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 hidden lg:block">
+                                            <p className="text-gray-200 text-sm leading-relaxed font-medium">{member.desc}</p>
+                                            {/* <div className="flex gap-4">
                                                 {member.icons.map((icon, idx) => (
                                                     <span key={idx} className="material-symbols-outlined cursor-pointer hover:text-primary hover:scale-125 transition-all duration-300 text-xl">{icon}</span>
                                                 ))}
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
