@@ -13,16 +13,16 @@ const Footer = () => {
                     <span className="font-bold text-lg text-heading  leading-none">Ofzen</span>
                 </div>
 
-                <p className="text-sm text-gray-500 dark:text-gray-500">© 2026 Ofzen • Remote</p>
+                <p className="text-sm text-gray-500 dark:text-gray-500">© 2026 Ofzen • Remote • All rights reserved • ofzenenterprise@gmail.com</p>
 
                 <div className="flex gap-6">
-                    <a className="text-gray-500 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest" href="#">
-                        X
-                    </a>
-                    <a className="text-gray-500 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest" href="#">
+                    <a className="text-gray-500 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest" href="https://www.linkedin.com/company/ofzen/">
                         LinkedIn
                     </a>
                     <a className="text-gray-500 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest" href="#">
+                        X
+                    </a>
+                    <a className="text-gray-500 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest" href="https://www.instagram.com/ofzen.dev?igsh=MW5lY2kyZGE1amNxYg==">
                         Instagram
                     </a>
                 </div>

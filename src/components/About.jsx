@@ -21,11 +21,11 @@ const steps = [
 ];
 
 const team = [
-    { name: 'Charan', role: 'Founder & Creative Director', image: charanImg, desc: 'Specializing in generative design systems and future-tech human interfaces.', icons: ['hub', 'deployed_code', 'public'] },
-    { name: 'Pavan', role: 'Lead Product Developer', image: pavanImg, desc: 'Expert in scalable Web3 infrastructures and low-latency interactive experiences.', icons: ['terminal', 'dataset'] },
-    { name: 'Sunil', role: 'Lead FrontEnd Developer', image: sunilImg, desc: 'Specializing in developing frontend interface with industry standards.', icons: ['hub', 'deployed_code', 'public'] },
+    { name: 'Charan Tej', role: 'UI/UX Designer', image: charanImg, desc: 'Specializing in generative design systems and future-tech human interfaces.', icons: ['hub', 'deployed_code', 'public'] },
+    { name: 'Pavan', role: 'Product Developer', image: pavanImg, desc: 'Expert in scalable Web3 infrastructures and low-latency interactive experiences.', icons: ['terminal', 'dataset'] },
+    { name: 'Sunil', role: 'Frontend Developer', image: sunilImg, desc: 'Specializing in developing frontend interface with industry standards.', icons: ['hub', 'deployed_code', 'public'] },
     { name: 'Sandeep', role: 'Strategic Growth Lead', image: sandeepImg, desc: 'Bridging the gap between creative vision and market dominance for high-growth startups.', icons: ['query_stats', 'share'] },
-    { name: 'Krishna', role: 'Backend Developer', image: krishnaImg, desc: 'Architecting high-availability server infrastructures and scalable microservices.', icons: ['database', 'cloud', 'api'] },
+    { name: 'Krishna', role: 'AI Engineer', image: krishnaImg, desc: 'Architecting high-availability server infrastructures and scalable microservices.', icons: ['database', 'cloud', 'api'] },
     { name: 'Nareen', role: 'Security Engineer', image: nareenImg, desc: 'Fortifying digital perimeters with advanced threat detection and zero-trust protocols.', icons: ['security', 'lock', 'shield'] }
 ];
 

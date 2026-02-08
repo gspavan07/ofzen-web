@@ -148,9 +148,9 @@ const Contact = () => {
                             Start your journey with OfZen.
                         </p>
                         <div className="flex gap-8 text-xs font-black uppercase tracking-[0.3em] text-primary/60">
-                            <a className="hover:text-primary transition-colors cursor-pointer" href="#">LinkedIn</a>
+                            <a className="hover:text-primary transition-colors cursor-pointer" href="https://www.linkedin.com/company/ofzen/">LinkedIn</a>
                             <a className="hover:text-primary transition-colors cursor-pointer" href="#">X</a>
-                            <a className="hover:text-primary transition-colors cursor-pointer" href="#">Instagram</a>
+                            <a className="hover:text-primary transition-colors cursor-pointer" href="https://www.instagram.com/ofzen.dev?igsh=MW5lY2kyZGE1amNxYg==">Instagram</a>
                         </div>
                     </div>
 
@@ -162,7 +162,7 @@ const Contact = () => {
                                 <input
                                     type="text"
                                     className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-black placeholder:text-subtext/30 transition-all font-bold"
-                                    placeholder="John Doe"
+                                    placeholder="Enter your name"
                                 />
                             </div>
                             <div className="relative group">
@@ -170,7 +170,7 @@ const Contact = () => {
                                 <input
                                     type="email"
                                     className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-black placeholder:text-subtext/30 transition-all font-bold"
-                                    placeholder="john@future.com"
+                                    placeholder="email@example.com"
                                 />
                             </div>
                             <div className="relative group">
