@@ -19,7 +19,7 @@ const testimonials = [
     },
     {
         name: "Krishna Mohan Koyya",
-        role: "Director of Koyya Enterprises Private Limited",
+        role: "Director of Koyya Enterprises",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDY_neTyWJoPYWw2xUG-s8EAsSeqDeyRjxBIAivvtEIjySAR7WuxwGDyIZt3jthSFlMc7Z3eh5IQ-5hsaWZ9mYxFUjwo9Lb_Fe1-nJpFnN8P76S0limVVJVwDI4QKYWyMaLHUriCN5EO5InJteQig5dqC5BZw9EcIBSFH_z19omwEtKyH7UspJ7xgnCS1tYUEyLwpJNkiZUcfIoAeMTeM4brXv9VBzeG4BkHdtBLsV_AvzAjHqeZcXAjVreqP33wuHK2z98nX-IDQIc",
         quote: "Engineering excellence meets pearlescent design. Every pixel is intentional. A true masterpiece of modern UI.",
         verified: true
