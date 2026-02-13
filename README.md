@@ -1,16 +1,57 @@
-# React + Vite
+# OfZen — Digital Engineering & Growth Studio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Building high-performance digital products with precision engineering and premium design.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌍 Overview
 
-## React Compiler
+OfZen is a modern digital engineering studio focused on crafting scalable, performance-driven, and visually immersive digital experiences.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+We combine clean architecture, advanced frontend engineering, and refined design systems to deliver platforms that are not only beautiful — but technically robust.
 
-## Expanding the ESLint configuration
+This repository contains the official source code of the OfZen web platform.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎯 Mission
+
+To engineer digital experiences that balance performance, design excellence, and strategic growth — helping brands build a strong and future-ready digital presence.
+
+---
+
+## 🧠 Core Services
+
+- Web Development
+- App Development
+- Custom Software Engineering
+- UI/UX System Design
+- Digital Growth & Brand Support
+
+---
+
+## 🛠 Technology Architecture
+
+This platform is built using a modern, high-performance frontend stack:
+
+- **Frontend Framework:** React 19
+- **Build Tool:** Vite
+- **Styling System:** Tailwind CSS 4
+- **Animation Engine:** GSAP (GreenSock Animation Platform)
+- **Interaction Layer:** Framer Motion
+- **Routing:** React Router 7
+- **Icon System:** Lucide React
+
+The stack is selected for scalability, performance optimization, and developer efficiency.
+
+---
+
+## ⚡ Engineering Principles
+
+- Performance-first architecture
+- Motion-driven interaction design
+- Clean component-based structure
+- Mobile-first responsive layouts
+- Optimized production builds
+- Maintainable and scalable codebase
+
