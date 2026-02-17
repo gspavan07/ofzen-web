@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Terminal from '../components/Terminal';
 
 const Home = () => {
     return (
@@ -59,21 +60,19 @@ const Home = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, ease: "easeOut" }}
-                        className="relative flex justify-center items-center lg:h-[600px] z-20"
+                        className="relative flex justify-center items-center  z-20"
                     >
                         <div className="absolute inset-0 bg-blue-500/10 rounded-full blur-[120px] scale-75"></div>
-                        <div className="relative z-10 w-full max-w-[500px] aspect-square group">
+                        <div className="relative z-10 w-full max-w-[500px]  group flex items-center justify-center">
                             <div className="absolute -inset-4 bg-gradient-to-tr from-cyan-400/20 to-blue-500/20 rounded-full blur-2xl opacity-50 group-hover:opacity-80 transition-opacity"></div>
-                            <img
-                                alt="Abstract 3D Chrome Sculpture"
-                                className="w-full h-full object-cover rounded-[3rem] shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnh0Tb6GWuhF2jXhizEv2xhEOoKI-iitw4gRZyCtIn3L4FpZpTOGk21xpTJfksAmzUbpfuWDAPeM8nav_zZ2uy3U7l40uRQhwFyXkUxfy48ao_SwUe5eSqf1sBxSYwucJW6WK9Bv3jcAAljdMco8nC1ykEaLOEtryvtQ85OB10aHKnkmJNanhiNmz08OZbfHPmsrbbG8sWaaPwVbBd_WiSxHkDQu7P4ogGwTsNr-oyU9klb89psIwGpocZOKibqg2gPovEoEWq2b_C"
-                            />
+
+                            <Terminal />
+
                             <div className="absolute -top-5 -right-5 md:-top-10 md:-right-10 glass-nav p-4 rounded-2xl shadow-xl flex items-center gap-3">
                                 <div className="bg-teal-400 size-2 rounded-full animate-pulse"></div>
                                 <span className="text-xs font-bold text-heading">Node Connected</span>
                             </div>
-                            <div className="absolute -bottom-4 -left-5 md:-bottom-6 md:-left-10 glass-nav p-5 rounded-2xl shadow-xl max-w-[150px] md:max-w-[200px]">
+                            <div className="absolute -bottom-8 -left-5 md:-bottom-8 md:-left-10 glass-nav p-5 rounded-2xl shadow-xl max-w-[150px] md:max-w-[200px]">
                                 <p className="text-[10px] uppercase font-bold text-primary mb-2">Technical Specs</p>
                                 <p className="text-xs font-medium leading-tight text-heading">Architecture built for ultra-low latency data sync.</p>
                             </div>
