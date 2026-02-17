@@ -1,32 +1,48 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import Koyya from '../assets/Koyya.jpeg';
+import CodeTracker from '../assets/CodeTracker.jpeg';
+import SKC from '../assets/SKC.jpeg';
+import MeatBox from '../assets/MeatBox.jpeg';
+import Unipilot from '../assets/Unipilot.jpeg';
 
 const projects = [
     {
-        title: "Quantum SaaS",
+        title: "Koyya Enterprises",
         category: "Enterprise Orchestration Platform",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3X35zZ5lpOt88JaYFO-8c6mZmI2mbMw1NzXQd7fsktG40KImMuc4FhrW9JdpneRd5d8i1iAPYogBu_71indpp6vhJN6HXWES4xokubmbssWz2KQUibpmBQSiv7NQ4dMcLB8jlrYjX87mlgvjAqFpbaBJxDaLdVB5xci1ltdrDhAVZLq12Oro1coC_ez0-5xiYCJM2MbRUsmMUtxwdA5TVYaSpQy8X07ajRoy1EsnFhmezR3wdgPiFePL6w88j_q81caukczIXYGS8",
+        image: Koyya,
         width: "w-[85vw] md:w-[750px]",
     },
     {
-        title: "Aura AI",
-        category: "Neural Interaction",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeia5a7A6X7IO3uq0u2t1dpt3aMlU1A1Kq0we2Ka9xYJc5xhkOvZoqHLRwc7qAzYos6nEq82nZGhrESH2jG7bfTPVqnYNA1N6HUSpg1SHZ5zbfLN_3LaTqzzZEJAJpjtdZvvnNR1xsegE7QFd_LM-xjMLZj4frqrTezTITcbGovC24pdbmkmc7oqYsAg--CZEub9GMw4YUoRsNnZ4Wuvu8mfniAr8ULfzpl3YZ2ixHisKSkVvRb5J36Sg-hjjy-7FL4HBfgvOmDRKO",
-        width: "w-[70vw] md:w-[500px]",
-        aspect: "aspect-[3/4]",
-        isPortrait: true
-    },
-    {
-        title: "Luxe Commerce",
-        category: "Digital Experience",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA8X29jXnrQ42KNad2uNXBGv2DyEK_Jnlx45gRQeRlfHN1YeJ5JUjCAi9o6fRm8gayInvBAiuP2REFop87YTNKSWEwgcY-PpVVDMkXJqohdFE2gylo8yZ-xgGjwMLK_VZYKMl8PaVGEUn9i9sZ-WN_Zd0gvmVTPZCoNtCxwTAIISGR6RsjSlhZ8AqbIDEuOD_Du2SP7XFcObA8Phf1YNlXai4PBTHT8c74Z7IO5i7exY0QL9uqJf0mQ6ZWvFvC-SJHjINXioOmp0Mjc",
-        width: "w-[85vw] md:w-[750px]",
-    },
-    {
-        title: "Eco Flow",
+        title: "Code Tracker",
         category: "Sustainability Dashboard",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDt3hoH7beht8VmEch3ibONIzOL6WuMVegFGJU_Qw0IZ-c69C6MqjSCZ4OevZ-6yoo5nFbpkUVULCszfvBPJaOH-OJuXplHytdui1cUfkHjI-mEIcGk--4Y_Io56B-3bRlvCsTHagxNSlF3NZefa9A9n0JteM7XnY6b573ziTODL-UgeIIfkzXrQRkwOTJ7gmZn-NYKAUruD7ID23ayiRgQRxF9_Qqazq5O6th-PZXoUp0Dp8uwKyeh9LRJSkDsAbIg_BAQuQyJNH1_",
+        //image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDt3hoH7beht8VmEch3ibONIzOL6WuMVegFGJU_Qw0IZ-c69C6MqjSCZ4OevZ-6yoo5nFbpkUVULCszfvBPJaOH-OJuXplHytdui1cUfkHjI-mEIcGk--4Y_Io56B-3bRlvCsTHagxNSlF3NZefa9A9n0JteM7XnY6b573ziTODL-UgeIIfkzXrQRkwOTJ7gmZn-NYKAUruD7ID23ayiRgQRxF9_Qqazq5O6th-PZXoUp0Dp8uwKyeh9LRJSkDsAbIg_BAQuQyJNH1_",
+        image: CodeTracker,
+        width: "w-[85vw] md:w-[750px]",
+    },
+    {
+        title: "SKC Caterers",
+        category: "Digital Experience",
+        // image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA8X29jXnrQ42KNad2uNXBGv2DyEK_Jnlx45gRQeRlfHN1YeJ5JUjCAi9o6fRm8gayInvBAiuP2REFop87YTNKSWEwgcY-PpVVDMkXJqohdFE2gylo8yZ-xgGjwMLK_VZYKMl8PaVGEUn9i9sZ-WN_Zd0gvmVTPZCoNtCxwTAIISGR6RsjSlhZ8AqbIDEuOD_Du2SP7XFcObA8Phf1YNlXai4PBTHT8c74Z7IO5i7exY0QL9uqJf0mQ6ZWvFvC-SJHjINXioOmp0Mjc",
+        image: SKC,
+        width: "w-[85vw] md:w-[750px]",
+    },
+    {
+        title: "Unipilot",
+        category: "Digital Experience",
+        // image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA8X29jXnrQ42KNad2uNXBGv2DyEK_Jnlx45gRQeRlfHN1YeJ5JUjCAi9o6fRm8gayInvBAiuP2REFop87YTNKSWEwgcY-PpVVDMkXJqohdFE2gylo8yZ-xgGjwMLK_VZYKMl8PaVGEUn9i9sZ-WN_Zd0gvmVTPZCoNtCxwTAIISGR6RsjSlhZ8AqbIDEuOD_Du2SP7XFcObA8Phf1YNlXai4PBTHT8c74Z7IO5i7exY0QL9uqJf0mQ6ZWvFvC-SJHjINXioOmp0Mjc",
+        image: Unipilot,
+        width: "w-[85vw] md:w-[750px]",
+    },
+    {
+        title: "Meat Box",
+        category: "Neural Interaction",
+        //image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeia5a7A6X7IO3uq0u2t1dpt3aMlU1A1Kq0we2Ka9xYJc5xhkOvZoqHLRwc7qAzYos6nEq82nZGhrESH2jG7bfTPVqnYNA1N6HUSpg1SHZ5zbfLN_3LaTqzzZEJAJpjtdZvvnNR1xsegE7QFd_LM-xjMLZj4frqrTezTITcbGovC24pdbmkmc7oqYsAg--CZEub9GMw4YUoRsNnZ4Wuvu8mfniAr8ULfzpl3YZ2ixHisKSkVvRb5J36Sg-hjjy-7FL4HBfgvOmDRKO",
+        image: MeatBox,
+        // width: "w-[70vw] md:w-[500px]",
+        // aspect: "aspect-[3/4]",
+        // isPortrait: true
         width: "w-[85vw] md:w-[750px]",
     }
 ];
@@ -169,21 +185,9 @@ const Work = () => {
             {/* Expertise Domains */}
             <div className="max-w-7xl mx-auto px-10 mt-32 grid grid-cols-1 md:grid-cols-3 gap-12">
                 {[
-                    {
-                        title: "Design Systems",
-                        icon: "widgets",
-                        description: "Component libraries and style guides that keep your product consistent as it grows."
-                    },
-                    {
-                        title: "Technical R&D",
-                        icon: "biotech",
-                        description: "Prototyping and research into emerging tools, frameworks, and AI integrations."
-                    },
-                    {
-                        title: "Brand Identity",
-                        icon: "diamond",
-                        description: "Logos, visual language, and brand guidelines that give your product a clear, lasting identity."
-                    }
+                    { title: "Design Systems", icon: "widgets" },
+                    { title: "Technical R&D", icon: "biotech" },
+                    { title: "Brand Identity", icon: "diamond" }
                 ].map((item, i) => (
                     <div key={i} className="flex flex-col gap-4 group">
                         <div className="size-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
@@ -191,7 +195,7 @@ const Work = () => {
                         </div>
                         <h4 className="text-xl font-bold text-black">{item.title}</h4>
                         <p className="text-sm text-subtext dark:text-gray-600 leading-relaxed max-w-[280px]">
-                            {item.description}
+                            Crafting high-performance digital solutions with surgical precision and artistic intent.
                         </p>
                     </div>
                 ))}

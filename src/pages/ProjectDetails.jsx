@@ -1,32 +1,66 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useParams, useNavigate } from 'react-router-dom';
+import Koyya from '../assets/Koyya.jpeg';
+import Koyya1 from '../assets/Koyya1.png';
+import Koyya2 from '../assets/Koyya2.png';
+import Koyya3 from '../assets/Koyya3.png';
+import CodeTracker from '../assets/CodeTracker.jpeg';
+import SKC from '../assets/SKC.jpeg';
+import MeatBox from '../assets/MeatBox.jpeg';
+import Unipilot from '../assets/Unipilot.jpeg';
+import ct1 from '../assets/ct1.png';
+import ct2 from '../assets/ct2.png';
+import ct3 from '../assets/ct3.png';
+import skc1 from '../assets/skc1.png';
+import skc2 from '../assets/skc2.png';
+import skc3 from '../assets/skc3.png';
+import U1 from '../assets/U1.png';
+import U2 from '../assets/U2.png';
+import U3 from '../assets/U3.png';
+import mt1 from '../assets/mt1.jpeg';
+import mt2 from '../assets/mt2.jpeg';
+import mt3 from '../assets/mt3.jpeg';
+
+
+
 
 const projects = [
     {
         id: "0",
-        title: "Quantum SaaS",
+        title: "Koyya Enterprises",
         description: "Leading the next generation of enterprise orchestration with precision and scale.",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3X35zZ5lpOt88JaYFO-8c6mZmI2mbMw1NzXQd7fsktG40KImMuc4FhrW9JdpneRd5d8i1iAPYogBu_71indpp6vhJN6HXWES4xokubmbssWz2KQUibpmBQSiv7NQ4dMcLB8jlrYjX87mlgvjAqFpbaBJxDaLdVB5xci1ltdrDhAVZLq12Oro1coC_ez0-5xiYCJM2MbRUsmMUtxwdA5TVYaSpQy8X07ajRoy1EsnFhmezR3wdgPiFePL6w88j_q81caukczIXYGS8",
+        image: [Koyya, Koyya1, Koyya2, Koyya3]
     },
     {
         id: "1",
-        title: "Aura AI",
-        description: "Neural interaction models that redefine the boundary between human and machine.",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeia5a7A6X7IO3uq0u2t1dpt3aMlU1A1Kq0we2Ka9xYJc5xhkOvZoqHLRwc7qAzYos6nEq82nZGhrESH2jG7bfTPVqnYNA1N6HUSpg1SHZ5zbfLN_3LaTqzzZEJAJpjtdZvvnNR1xsegE7QFd_LM-xjMLZj4frqrTezTITcbGovC24pdbmkmc7oqYsAg--CZEub9GMw4YUoRsNnZ4Wuvu8mfniAr8ULfzpl3YZ2ixHisKSkVvRb5J36Sg-hjjy-7FL4HBfgvOmDRKO",
+        title: "Code Tracker",
+        description: "Real-time sustainability tracking and energy optimization for modern ecosystems.",
+        // image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDt3hoH7beht8VmEch3ibONIzOL6WuMVegFGJU_Qw0IZ-c69C6MqjSCZ4OevZ-6yoo5nFbpkUVULCszfvBPJaOH-OJuXplHytdui1cUfkHjI-mEIcGk--4Y_Io56B-3bRlvCsTHagxNSlF3NZefa9A9n0JteM7XnY6b573ziTODL-UgeIIfkzXrQRkwOTJ7gmZn-NYKAUruD7ID23ayiRgQRxF9_Qqazq5O6th-PZXoUp0Dp8uwKyeh9LRJSkDsAbIg_BAQuQyJNH1_",
+        image: [CodeTracker, ct1, ct2, ct3]
     },
     {
         id: "2",
-        title: "Luxe Commerce",
+        title: "SKC Caterers",
         description: "High-end digital shopping experiences for the world's most exclusive brands.",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA8X29jXnrQ42KNad2uNXBGv2DyEK_Jnlx45gRQeRlfHN1YeJ5JUjCAi9o6fRm8gayInvBAiuP2REFop87YTNKSWEwgcY-PpVVDMkXJqohdFE2gylo8yZ-xgGjwMLK_VZYKMl8PaVGEUn9i9sZ-WN_Zd0gvmVTPZCoNtCxwTAIISGR6RsjSlhZ8AqbIDEuOD_Du2SP7XFcObA8Phf1YNlXai4PBTHT8c74Z7IO5i7exY0QL9uqJf0mQ6ZWvFvC-SJHjINXioOmp0Mjc",
+        // image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA8X29jXnrQ42KNad2uNXBGv2DyEK_Jnlx45gRQeRlfHN1YeJ5JUjCAi9o6fRm8gayInvBAiuP2REFop87YTNKSWEwgcY-PpVVDMkXJqohdFE2gylo8yZ-xgGjwMLK_VZYKMl8PaVGEUn9i9sZ-WN_Zd0gvmVTPZCoNtCxwTAIISGR6RsjSlhZ8AqbIDEuOD_Du2SP7XFcObA8Phf1YNlXai4PBTHT8c74Z7IO5i7exY0QL9uqJf0mQ6ZWvFvC-SJHjINXioOmp0Mjc",
+        image: [SKC, skc1, skc2, skc3]
     },
     {
         id: "3",
-        title: "Eco Flow",
-        description: "Real-time sustainability tracking and energy optimization for modern ecosystems.",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDt3hoH7beht8VmEch3ibONIzOL6WuMVegFGJU_Qw0IZ-c69C6MqjSCZ4OevZ-6yoo5nFbpkUVULCszfvBPJaOH-OJuXplHytdui1cUfkHjI-mEIcGk--4Y_Io56B-3bRlvCsTHagxNSlF3NZefa9A9n0JteM7XnY6b573ziTODL-UgeIIfkzXrQRkwOTJ7gmZn-NYKAUruD7ID23ayiRgQRxF9_Qqazq5O6th-PZXoUp0Dp8uwKyeh9LRJSkDsAbIg_BAQuQyJNH1_",
-    }
+        title: "Unipilot",
+        description: "Neural interaction models that redefine the boundary between human and machine.",
+        // image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeia5a7A6X7IO3uq0u2t1dpt3aMlU1A1Kq0we2Ka9xYJc5xhkOvZoqHLRwc7qAzYos6nEq82nZGhrESH2jG7bfTPVqnYNA1N6HUSpg1SHZ5zbfLN_3LaTqzzZEJAJpjtdZvvnNR1xsegE7QFd_LM-xjMLZj4frqrTezTITcbGovC24pdbmkmc7oqYsAg--CZEub9GMw4YUoRsNnZ4Wuvu8mfniAr8ULfzpl3YZ2ixHisKSkVvRb5J36Sg-hjjy-7FL4HBfgvOmDRKO",
+        image: [Unipilot, U1, U2, U3]
+    },
+
+    {
+        id: "4",
+        title: "Meat Box",
+        description: "Neural interaction models that redefine the boundary between human and machine.",
+        // image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeia5a7A6X7IO3uq0u2t1dpt3aMlU1A1Kq0we2Ka9xYJc5xhkOvZoqHLRwc7qAzYos6nEq82nZGhrESH2jG7bfTPVqnYNA1N6HUSpg1SHZ5zbfLN_3LaTqzzZEJAJpjtdZvvnNR1xsegE7QFd_LM-xjMLZj4frqrTezTITcbGovC24pdbmkmc7oqYsAg--CZEub9GMw4YUoRsNnZ4Wuvu8mfniAr8ULfzpl3YZ2ixHisKSkVvRb5J36Sg-hjjy-7FL4HBfgvOmDRKO",
+        image: [MeatBox, mt1, mt2, mt3]
+    },
 ];
 
 const ProjectSlide = ({ project }) => {
@@ -62,7 +96,7 @@ const ProjectSlide = ({ project }) => {
                     {/* Section 1: Image Left, Desc Right */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
                         <div className="rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-[4/3] bg-black/5">
-                            <img src={project.image} alt="Process" className="w-full h-full object-cover" />
+                            <img src={project.image[0]} alt="Process" className="w-full h-full object-cover" />
                         </div>
                         <div className="flex flex-col gap-4 md:gap-6">
                             <h3 className="text-xl md:text-4xl font-black text-heading">The Vision</h3>
@@ -82,14 +116,14 @@ const ProjectSlide = ({ project }) => {
                             </p>
                         </div>
                         <div className="order-1 md:order-2 rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-[4/3] bg-black/5">
-                            <img src={project.image} alt="Impact" className="w-full h-full object-cover" />
+                            <img src={project.image[1]} alt="Impact" className="w-full h-full object-cover" />
                         </div>
                     </div>
 
                     {/* Section 3: Image Left, Desc Right */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
                         <div className="rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-[4/3] bg-black/5">
-                            <img src={project.image} alt="Future" className="w-full h-full object-cover" />
+                            <img src={project.image[2]} alt="Future" className="w-full h-full object-cover" />
                         </div>
                         <div className="flex flex-col gap-4 md:gap-6">
                             <h3 className="text-xl md:text-4xl font-black text-heading">Scalability</h3>
@@ -108,7 +142,7 @@ const ProjectSlide = ({ project }) => {
                             </p>
                         </div>
                         <div className="order-1 md:order-2 rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-[4/3] bg-black/5">
-                            <img src={project.image} alt="Integration" className="w-full h-full object-cover" />
+                            <img src={project.image[3]} alt="Integration" className="w-full h-full object-cover" />
                         </div>
                     </div>
                 </div>
