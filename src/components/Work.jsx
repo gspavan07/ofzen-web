@@ -169,9 +169,21 @@ const Work = () => {
             {/* Expertise Domains */}
             <div className="max-w-7xl mx-auto px-10 mt-32 grid grid-cols-1 md:grid-cols-3 gap-12">
                 {[
-                    { title: "Design Systems", icon: "widgets" },
-                    { title: "Technical R&D", icon: "biotech" },
-                    { title: "Brand Identity", icon: "diamond" }
+                    {
+                        title: "Design Systems",
+                        icon: "widgets",
+                        description: "Component libraries and style guides that keep your product consistent as it grows."
+                    },
+                    {
+                        title: "Technical R&D",
+                        icon: "biotech",
+                        description: "Prototyping and research into emerging tools, frameworks, and AI integrations."
+                    },
+                    {
+                        title: "Brand Identity",
+                        icon: "diamond",
+                        description: "Logos, visual language, and brand guidelines that give your product a clear, lasting identity."
+                    }
                 ].map((item, i) => (
                     <div key={i} className="flex flex-col gap-4 group">
                         <div className="size-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
@@ -179,7 +191,7 @@ const Work = () => {
                         </div>
                         <h4 className="text-xl font-bold text-black">{item.title}</h4>
                         <p className="text-sm text-subtext dark:text-gray-600 leading-relaxed max-w-[280px]">
-                            Crafting high-performance digital solutions with surgical precision and artistic intent.
+                            {item.description}
                         </p>
                     </div>
                 ))}

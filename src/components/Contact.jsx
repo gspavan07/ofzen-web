@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import sivajiImg from '../assets/sivaji.jpg';
+import ramasriImg from '../assets/ramasri.jpg';
+import krishna2Img from '../assets/krishna_img.png';
 
 const testimonials = [
     {
         name: "sivaji kumar polisetti",
         role: "CEO of NRI Connects",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD7UuJiVMVyAa7JQOiiKnz87DXgbw1ZBbwG7cTvR76oUUYERDcmoBfJZT0obcrbXvZQBqwny2knGJcXWNIFjaAiylyDmf36vSDSv5WpVYo6ynVNUBSCFJbNMX2CQaxOnqNvcywLHZY_3jj2GvRZad65H8ybEHkvXhT3XWi9ixkWTiMq302rvRHmU1eDK7qANubsHS5zfaqhdYDcDD09MZnTDaoxPQXmQeejEo2s39PHhmGyUZWokpozAIdlkZw14zbwQ0rimdJsU3OY",
-        quote: "Ofzen's vision for 2026 is unparalleled. The glassmorphic interface is stunning and sets a new standard for luxury tech.",
+        image: sivajiImg,
+        quote: "Ofzen took our brief and turned it into something we genuinely didn't expect. The process was smooth, the communication was clear, and the final product exceeded what we asked for.",
         verified: true
     },
     {
         name: "Dr. Rama Sri",
-        role: "Dean at Aditya University",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBiNXIHn86Hx1a2HW6f-MRbZ1y17-pEFXs0_DN6GZUu-Gjs1CvNC4zBGtzjo5gA0PdevMUrCe8XKJzkbMRsJJXbvWxw8uzdYmgdoQ4E5Rta0qXhIzm44uyk2D6nKXQZaIJDRQQtVmpPg07ebi8Y0cIiXDEuFCUkTwcdCa7f97aku-QqlY6E2C-inbjIAmFrShGbLWhwP9XJjhRrITSEeijHMO41g47FhlBqpvvQOAwElGcNp4ruHhOG_wt8vbsuMbB75-tNdmvSRmuo",
-        quote: "The most futuristic agency we've partnered with. Highly recommended for those seeking a cutting-edge presence.",
+        role: "Pro Vice Chancellor at Aditya University",
+        image: ramasriImg,
+        quote: "Professional, responsive, and technically solid. They understood our institutional requirements and delivered a product that our staff and students actually find easy to use.",
         verified: true,
         offset: true
     },
     {
         name: "Krishna Mohan Koyya",
         role: "Director of Koyya Enterprises",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDY_neTyWJoPYWw2xUG-s8EAsSeqDeyRjxBIAivvtEIjySAR7WuxwGDyIZt3jthSFlMc7Z3eh5IQ-5hsaWZ9mYxFUjwo9Lb_Fe1-nJpFnN8P76S0limVVJVwDI4QKYWyMaLHUriCN5EO5InJteQig5dqC5BZw9EcIBSFH_z19omwEtKyH7UspJ7xgnCS1tYUEyLwpJNkiZUcfIoAeMTeM4brXv9VBzeG4BkHdtBLsV_AvzAjHqeZcXAjVreqP33wuHK2z98nX-IDQIc",
-        quote: "Engineering excellence meets pearlescent design. Every pixel is intentional. A true masterpiece of modern UI.",
+        image: krishna2Img,
+        quote: "Good team to work with. They kept us informed throughout and delivered on time. The end result has noticeably improved how we present our business online.",
         verified: true
     }
 
@@ -29,20 +32,20 @@ const testimonials = [
 
 const faqs = [
     {
-        question: "What is the Silicon Valley 2026 tech stack?",
-        answer: "We leverage a cutting-edge stack including decentralized AI nodes, spatial computing interfaces (WebXR), and real-time iridescent rendering engines for immersive web experiences."
+        question: "What technologies do you work with?",
+        answer: "We work with a modern tech stack, including React, Next.js, JavaScript, Tailwind CSS, and various cloud and AI services. We choose the right tools for your specific project needs."
     },
     {
         question: "How do partnership models work?",
-        answer: "Our models range from project-based sprints to full-scale technological integration partnerships where we act as your fractional innovation department."
+        answer: "We work on fixed-scope projects, monthly retainers, or long-term embedded partnerships depending on what your team needs. We'll recommend the right model after an initial call."
     },
     {
         question: "What is the typical project timeline?",
-        answer: "Strategic visions are delivered in 4-6 weeks, while complex spatial platforms typically launch within 3-5 months from initial discovery."
+        answer: "A standard web or app project runs 6–12 weeks depending on scope. Smaller design or branding work can wrap in 2–4 weeks. We'll give you a clear timeline after the discovery call."
     },
     {
         question: "How does Ofzen handle data security?",
-        answer: "Security is engineered at the protocol level. We use zero-knowledge proofs and decentralized storage to ensure client data remains private and uncompromised."
+        answer: "We follow standard security practices — encrypted communications, secure credential handling, NDA-protected workflows, and access controls for all client assets."
     }
 ];
 
@@ -89,7 +92,7 @@ const Contact = () => {
             {/* Testimonials */}
             <div className="max-w-[1200px] mx-auto px-4 lg:px-40 py-24">
                 <h2 className="text-4xl md:text-[56px] font-black tracking-tighter text-center mb-20 text-heading">
-                    The Future, Delivered
+                    What Our Clients Say
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {testimonials.map((t, i) => (
@@ -99,9 +102,10 @@ const Contact = () => {
                             className={`glass-card p-8 rounded-[2rem] flex flex-col gap-6 shadow-xl relative ${t.offset ? 'md:mt-12' : ''}`}
                         >
                             <div className="flex items-center gap-4">
-                                <div
-                                    className="w-14 h-14 rounded-full bg-cover bg-center border-2 border-primary/20 shadow-inner"
-                                    style={{ backgroundImage: `url(${t.image})` }}
+                                <img
+                                    src={t.image}
+                                    alt={t.name}
+                                    className="w-16 h-16 rounded-full object-cover aspect-square border-2 border-primary/30 shadow-md flex-shrink-0"
                                 />
                                 <div>
                                     <p className="text-lg font-black text-heading  leading-tight">{t.name}</p>
@@ -141,12 +145,11 @@ const Contact = () => {
                 <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-16 relative z-10">
                     <div className="flex-1">
                         <h2 className="text-[64px] md:text-[84px] font-black leading-[0.9] tracking-tighter mb-8 text-heading ">
-                            Ready to <br />
-                            <span className="text-primary italic font-serif">Leap?</span>
+                            Got a Project <br />
+                            <span className="text-primary italic font-serif">in mind?</span>
                         </h2>
                         <p className="text-xl text-subtext dark:text-gray-500 mb-12 max-w-sm font-medium">
-                            Build smarter. Launch faster.
-                            Start your journey with OfZen.
+                            Tell us what you're building. We'll get back to you within 24 hours.
                         </p>
                         <div className="flex gap-8 text-xs font-black uppercase tracking-[0.3em] text-primary/60">
                             <a className="hover:text-primary transition-colors cursor-pointer" href="https://www.linkedin.com/company/ofzen/">LinkedIn</a>
@@ -179,7 +182,7 @@ const Contact = () => {
                                 <textarea
                                     rows="3"
                                     className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-black placeholder:text-subtext/30 transition-all font-bold resize-none"
-                                    placeholder="Tell us about your vision..."
+                                    placeholder="Describe your project or idea — even rough notes are fine."
                                 />
                             </div>
                             <motion.button

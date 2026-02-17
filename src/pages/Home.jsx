@@ -18,14 +18,13 @@ const Home = () => {
                     >
 
                         <h1 className="text-3xl sm:text-4xl md:text-7xl font-black leading-[1.1] tracking-[-0.04em] text-heading">
-                            Engineering the <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-500">Future of Digital</span> <br />
-                            Experiences
+                            We Design & Build <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-500">Digital Products</span> <br />
+                            That Work
                         </h1>
 
                         <p className="text-base md:text-xl text-subtext dark:text-gray-600 font-normal leading-relaxed max-w-[540px]">
-                            A strategic partner for the next generation of tech leaders. We craft high-performance solutions for futuristic digital landscapes.
-                        </p>
+                            From early-stage startups to growing enterprises — we handle design, development, and everything in between.                        </p>
 
                         <div className="flex flex-wrap gap-4 pt-4">
                             <button
@@ -44,13 +43,13 @@ const Home = () => {
 
                         <div className="flex items-center gap-6 pt-8 border-t border-black/5 dark:border-white/5">
                             <div className="flex flex-col">
-                                <span className="text-2xl font-black text-primary">240+</span>
-                                <span className="text-xs font-medium text-subtext uppercase tracking-tighter">Global Projects</span>
+                                <span className="text-2xl font-black text-primary">10+</span>
+                                <span className="text-xs font-medium text-subtext uppercase tracking-tighter">Projects Delivered</span>
                             </div>
                             <div className="h-8 w-px bg-black/5 dark:bg-white/10"></div>
                             <div className="flex flex-col">
-                                <span className="text-2xl font-black text-primary">12ms</span>
-                                <span className="text-xs font-medium text-subtext uppercase tracking-tighter">Avg Response</span>
+                                <span className="text-2xl font-black text-primary">15+ Satisfied Clients</span>
+                                <span className="text-xs font-medium text-subtext uppercase tracking-tighter">Across India</span>
                             </div>
                         </div>
                     </motion.div>
@@ -94,7 +93,7 @@ const Home = () => {
                     >
                         <span className="material-symbols-outlined text-primary text-3xl">hub</span>
                         <h3 className="text-lg font-bold text-heading">Strategic Design</h3>
-                        <p className="text-sm text-subtext dark:text-gray-600 leading-relaxed">High-end interfaces built on cognitive science and visual excellence.</p>
+                        <p className="text-sm text-subtext dark:text-gray-600 leading-relaxed">Interfaces designed around how users actually think — clean, fast, and purposeful.</p>
                     </motion.div>
 
                     <motion.div
@@ -108,7 +107,7 @@ const Home = () => {
                     >
                         <span className="material-symbols-outlined text-primary text-3xl">memory</span>
                         <h3 className="text-lg font-bold text-heading ">Advanced Engineering</h3>
-                        <p className="text-sm text-subtext dark:text-gray-600 leading-relaxed">Robust scalable systems powered by the latest 2026 tech stack.</p>
+                        <p className="text-sm text-subtext dark:text-gray-600 leading-relaxed">Backend and frontend systems built to handle real load without breaking.</p>
                     </motion.div>
 
                     <motion.div
@@ -122,7 +121,7 @@ const Home = () => {
                     >
                         <span className="material-symbols-outlined text-primary text-3xl">science</span>
                         <h3 className="text-lg font-bold text-heading">Innovation Lab</h3>
-                        <p className="text-sm text-subtext dark:text-gray-600 leading-relaxed">Pioneering R&D in AI-integrated workflows and immersive web.</p>
+                        <p className="text-sm text-subtext dark:text-gray-600 leading-relaxed">Exploring what's next — AI tools, automation, and smarter product workflows.</p>
                     </motion.div>
                 </div>
             </div>

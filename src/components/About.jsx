@@ -149,8 +149,7 @@ const About = () => {
                     <div className="max-w-xl text-heading">
                         <h1 className="text-3xl md:text-6xl font-black leading-tight tracking-tight mb-4">The Ofzen Way</h1>
                         <p className="text-gray-700 dark:text-gray-600 text-lg font-normal leading-relaxed">
-                            Scroll to rotate through our 8-phase methodology. Each scroll step advances the orbital system.
-                        </p>
+                            Every project follows a clear, tested process — from first conversation to final launch.                        </p>
                     </div>
                     <div className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-accent-fire mb-2">
                         <span className="size-2 rounded-full bg-accent-fire animate-pulse"></span>
@@ -299,17 +298,17 @@ const About = () => {
 
                         <div className="relative z-20 max-w-5xl mx-auto text-center mt-12">
                             <h2 className="font-serif italic text-2xl sm:text-4xl md:text-7xl leading-[1.3] text-heading dark:text-heading mb-16 tracking-tight" style={{ fontFamily: '"Playfair Display", serif', fontWeight: 900 }}>
-                                "Design is not just what it looks like; it's how it <span className="relative inline-block text-accent-fire not-italic font-black mx-1">
-                                    accelerates
+                                "Good products don't just look <span className="relative inline-block text-accent-fire not-italic font-black mx-1">
+                                    right
                                     <span className="absolute -bottom-3 left-0 w-full h-1.5 bg-accent-fire/20 rounded-full"></span>
-                                </span> the human intent."
+                                </span> — they get out of the way and let people do what they came to do."
                             </h2>
                         </div>
 
                         {/* Philosophy Footer */}
                         <div className="absolute bottom-8 left-0 w-full flex items-center justify-center gap-8 px-10 z-10">
                             <div className="h-px flex-1 max-w-[100px] bg-primary/20"></div>
-                            <p className="text-primary font-bold text-[10px] tracking-[0.5em] uppercase whitespace-nowrap">OFZEN PHILOSOPHY 2026</p>
+                            <p className="text-primary font-bold text-[10px] tracking-[0.5em] uppercase whitespace-nowrap">OFZEN</p>
                             <div className="h-px flex-1 max-w-[100px] bg-primary/20"></div>
                         </div>
                     </div>
