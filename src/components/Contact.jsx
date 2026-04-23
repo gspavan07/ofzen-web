@@ -247,7 +247,7 @@ const Contact = () => {
         {/* Scroll to Top Button */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="absolute bottom-10 right-10 z-[60] size-14 rounded-full glass-nav flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-2xl group active:scale-95 cursor-pointer"
+          className="absolute bottom-10 right-10 z-60 size-14 rounded-full glass-nav flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-2xl group active:scale-95 cursor-pointer"
         >
           <span className="material-symbols-outlined text-3xl transition-transform group-hover:-translate-y-1">
             north

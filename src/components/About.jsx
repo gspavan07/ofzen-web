@@ -95,7 +95,6 @@ const steps = [
   },
 ];
 
-
 const OrbitItem = ({ step, index, activeIndex }) => {
   const totalSteps = 8;
   // Normalized position relative to active index
@@ -177,7 +176,7 @@ const OrbitItem = ({ step, index, activeIndex }) => {
           flex items-center justify-center transition-all duration-700 ease-out
           ${
             isActive
-              ? "size-24 rounded-[2rem] active-phase-card shadow-2xl scale-110"
+              ? "size-24 rounded-4xl active-phase-card shadow-2xl scale-110"
               : "size-20 rounded-2xl inactive-phase-card opacity-80"
           }
         `}
@@ -190,7 +189,7 @@ const OrbitItem = ({ step, index, activeIndex }) => {
         </div>
         <div className="text-center pb-8 min-w-[120px]">
           <p
-            className={`font-black transition-all duration-700 ease-out tracking-tight leading-none mb-1 ${isActive ? "text-lg sm:text-2xl bg-clip-text text-transparent bg-gradient-to-r from-accent-fire to-sunset-pink" : "text-base sm:text-xl text-heading dark:text-white"}`}
+            className={`font-black transition-all duration-700 ease-out tracking-tight leading-none mb-1 ${isActive ? "text-lg sm:text-2xl bg-clip-text text-transparent bg-linear-to-r from-accent-fire to-sunset-pink" : "text-base sm:text-xl text-heading dark:text-white"}`}
           >
             {step.title}
           </p>
@@ -340,7 +339,7 @@ const About = () => {
             </div>
 
             {/* Info Panel */}
-            <div className="w-full lg:w-[420px] glass-card rounded-3xl p-8 lg:p-10 relative overflow-hidden shadow-2xl z-[90]">
+            <div className="w-full lg:w-[420px] glass-card rounded-3xl p-8 lg:p-10 relative overflow-hidden shadow-2xl z-90">
               {/* Watermark */}
               <div className="absolute top-0 right-0 p-4">
                 <span className="text-[60px] font-black text-primary/10 select-none leading-none">
@@ -398,7 +397,7 @@ const About = () => {
               </AnimatePresence>
 
               <div
-                className="absolute bottom-0 left-0 h-1.5 bg-gradient-to-r from-accent-fire to-sunset-pink transition-all duration-1000 ease-out"
+                className="absolute bottom-0 left-0 h-1.5 bg-linear-to-r from-accent-fire to-sunset-pink transition-all duration-1000 ease-out"
                 style={{ width: `${((activeIndex + 1) / 8) * 100}%` }}
               />
             </div>
