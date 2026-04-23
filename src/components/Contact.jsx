@@ -98,8 +98,8 @@ const Contact = () => {
   return (
     <section className="relative w-full overflow-hidden">
       {/* Testimonials */}
-      <div className="max-w-[1200px] mx-auto px-4 lg:px-40 py-24">
-        <h2 className="text-4xl md:text-[56px] font-black tracking-tighter text-center mb-20 text-heading">
+      <div className="max-w-[1200px] mx-auto px-4 lg:px-40 pb-24">
+        <h2 className="text-4xl md:text-[56px] font-black tracking-tighter text-center mb-15 text-heading">
           What Our Clients Say
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
