@@ -1,7 +1,5 @@
 import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Team from "./Team";
 
 const steps = [
@@ -110,43 +108,43 @@ const OrbitItem = ({ step, index, activeIndex }) => {
     1: {
       transform: "translate3d(280px, 40px, 150px) scale(1)",
       opacity: 0.8,
-      blur: 0.5,
+      blur: 0.3,
       zIndex: 90,
     },
     2: {
       transform: "translate3d(450px, -60px, -100px) scale(0.85)",
       opacity: 0.6,
-      blur: 1.5,
+      blur: 0.8,
       zIndex: 80,
     },
     3: {
       transform: "translate3d(200px, -160px, -250px) scale(0.7)",
       opacity: 0.4,
-      blur: 2.5,
+      blur: 1.2,
       zIndex: 70,
     },
     4: {
       transform: "translate3d(-50%, -200px, -350px) scale(0.6)",
       opacity: 0.3,
-      blur: 4,
+      blur: 1.5,
       zIndex: 60,
     },
     5: {
       transform: "translate3d(-350px, -160px, -250px) scale(0.7)",
       opacity: 0.4,
-      blur: 2.5,
+      blur: 1.2,
       zIndex: 70,
     },
     6: {
       transform: "translate3d(-550px, -60px, -100px) scale(0.85)",
       opacity: 0.6,
-      blur: 1.5,
+      blur: 0.8,
       zIndex: 80,
     },
     7: {
       transform: "translate3d(-400px, 40px, 150px) scale(1)",
       opacity: 0.8,
-      blur: 0.5,
+      blur: 0.3,
       zIndex: 90,
     },
   };
@@ -164,36 +162,52 @@ const OrbitItem = ({ step, index, activeIndex }) => {
       }}
       transition={{
         duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1], // Smooth cubic-bezier
+        ease: [0.25, 0.1, 0.25, 1],
         opacity: { duration: 0.5 },
         filter: { duration: 0.6 },
       }}
-      style={{ zIndex: style.zIndex, transformStyle: "preserve-3d" }}
+      style={{
+        zIndex: isActive ? 50 : style.zIndex,
+        transformStyle: "preserve-3d",
+      }}
     >
-      <div className="flex flex-col items-center gap-4">
+      <div className="relative flex flex-col items-center">
+        {/* ICON (FLOATING) */}
+        {/* ICON (TRUE FLOATING) */}
         <div
           className={`
           flex items-center justify-center transition-all duration-700 ease-out
           ${
             isActive
-              ? "size-24 rounded-4xl active-phase-card shadow-2xl scale-110"
-              : "size-20 rounded-2xl inactive-phase-card opacity-80"
+              ? "absolute -top-16 z-50 size-20 rounded-2xl bg-white shadow-[0_8px_20px_rgba(19,91,236,0.15)] scale-[1.05] text-primary border border-primary/5"
+              : "size-16 rounded-2xl bg-white/80 inactive-phase-card opacity-60"
           }
         `}
         >
           <span
-            className={`material-symbols-outlined ${isActive ? "text-5xl" : "text-3xl"}`}
+            className={`material-symbols-outlined ${isActive ? "text-4xl" : "text-2xl"}`}
           >
             {step.icon}
           </span>
         </div>
-        <div className="text-center pb-8 min-w-[120px]">
+        {/* SPACER (Prevents overlap with absolute icon) */}
+        {isActive && <div className="h-10" />}
+
+        {/* TEXT BLOCK */}
+        <div
+          className={`text-center transition-all duration-700 pb-4 ${isActive ? "mt-4" : "mt-4"}`}
+        >
           <p
-            className={`font-black transition-all duration-700 ease-out tracking-tight leading-none mb-1 ${isActive ? "text-lg sm:text-2xl bg-clip-text text-transparent bg-linear-to-r from-accent-fire to-sunset-pink" : "text-base sm:text-xl text-heading dark:text-white"}`}
+            className={`font-black transition-all duration-700 ease-out tracking-tight leading-none mb-1 
+            ${
+              isActive
+                ? "text-lg sm:text-2xl bg-clip-text text-transparent bg-linear-to-r from-accent-fire to-sunset-pink"
+                : "text-base sm:text-xl text-primary opacity-20 blur-[1.5px]"
+            }`}
           >
             {step.title}
           </p>
-          <p className="text-[10px] uppercase tracking-widest font-bold text-primary/40">
+          <p className="text-[10px] uppercase tracking-widest font-bold text-primary/30">
             Phase {step.id}
           </p>
         </div>
@@ -209,48 +223,25 @@ const About = () => {
   const [orbitalOpacity, setOrbitalOpacity] = useState(0.25);
   const [orbitalBlur, setOrbitalBlur] = useState(1.5);
 
-  // Register GSAP ScrollTrigger
-  gsap.registerPlugin(ScrollTrigger);
-
-  // GSAP ScrollTrigger for orbital animation
-  // This properly pins the orbit section and drives phase changes based on scroll progress
-  useLayoutEffect(() => {
-    const stickyElement = sectionRef.current;
-    if (!stickyElement) return;
-
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: stickyElement,
-      start: "center center", // Pin when the section is centered in viewport
-      end: () => `+=${steps.length * 250}vh`, // Increased distance to prevent skipping phases (250vh per phase)
-      pin: true, // Pin the element itself
-      pinSpacing: true, // Maintain spacing
-      scrub: 0.5, // Reduced lag for tighter sync, reducing "jump" feeling
-      // Removed anticipatePin as it can cause vertical jitter
-      // Removed fastScrollEnd to prevent jumpy catch-up
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        const progress = self.progress; // 0 to 1
-
-        // Map progress to phases (0-7)
-        const totalPhases = steps.length;
-        const newActiveIndex = Math.min(
-          Math.floor(progress * totalPhases),
-          totalPhases - 1,
-        );
-
-        setActiveIndex(newActiveIndex);
-
-        // Orbital visual effects
-        setOrbitalOpacity(0.2 + progress * 0.1);
-        setOrbitalBlur(2 - progress * 2);
-      },
-    });
-
-    // Cleanup on unmount
-    return () => {
-      scrollTrigger.kill();
+  // Keyboard navigation for orbit
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowLeft") {
+        setActiveIndex((prev) => (prev - 1 + steps.length) % steps.length);
+      } else if (e.key === "ArrowRight") {
+        setActiveIndex((prev) => (prev + 1) % steps.length);
+      }
     };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  // Simplified orbital effects for transitions
+  useEffect(() => {
+    const progress = activeIndex / (steps.length - 1);
+    setOrbitalOpacity(0.2 + progress * 0.1);
+    setOrbitalBlur(1.5 - progress * 1.5);
+  }, [activeIndex]);
 
   return (
     <div id="about" className="w-full relative silk-texture">
@@ -268,43 +259,37 @@ const About = () => {
           </div>
           <div className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-accent-fire mb-2">
             <span className="size-2 rounded-full bg-accent-fire animate-pulse"></span>
-            Orbit Tracking Active
+            Interactive Orbit
           </div>
         </div>
       </div>
 
-      {/* 2. ORBITAL SECTION with GSAP ScrollTrigger */}
-      {/* 
-                GSAP ScrollTrigger Configuration:
-                - trigger: triggerRef (this section)
-                - pin: sectionRef (the orbit container)
-                - end: 8 viewport heights (100vh per phase)
-                
-                How it works:
-                1. When trigger's top hits viewport top → orbit container pins
-                2. Scroll progress 0-100% maps to phases 1-8
-                3. After 800vh of scroll → unpin and resume normal scrolling
-            */}
-      <section ref={triggerRef}>
-        {/* This container gets pinned by GSAP ScrollTrigger */}
+      <section ref={triggerRef} className="">
+        {/* Interactive orbital section */}
         <div
           ref={sectionRef}
-          className="h-screen w-full flex items-center justify-center overflow-hidden bg-transparent"
+          className="w-full flex items-center justify-center bg-transparent"
         >
-          <div className="max-w-[1400px] w-full relative h-screen flex flex-col lg:flex-row justify-center items-center gap-12 lg:gap-32 px-4">
+          <div className="max-w-[1400px] w-full relative  flex flex-col justify-center items-center gap-0 px-4 overflow-visible">
             {/* The Orbit Visualization */}
             <div
-              className="relative flex-1 h-[400px] md:h-[600px] scale-[0.4] md:scale-100 flex items-center justify-center"
-              style={{ perspective: "2000px", transformStyle: "preserve-3d" }}
+              className="relative w-full h-[200px] md:h-[450px] scale-[0.32] md:scale-75 flex items-center justify-center mb-[-80px] md:mb-[-100px] overflow-visible"
+              style={{
+                perspective:
+                  typeof window !== "undefined" && window.innerWidth < 768
+                    ? "500px"
+                    : "1000px",
+                transformStyle: "preserve-3d",
+              }}
             >
-              {/* CORE Node */}
-              <div className="relative z-30 size-48 lg:size-64 rounded-full glass-card flex items-center justify-center shadow-[0_0_100px_rgba(19,91,236,0.15)] border border-primary/10">
-                <div className="absolute inset-0 rounded-full bg-primary/10 blur-3xl animate-pulse"></div>
+              {/* CORE Node - Shifted Up */}
+              <div className="relative z-20 size-32 lg:size-40 rounded-full glass-card flex items-center justify-center shadow-[0_0_50px_rgba(19,91,236,0.1)] border border-primary/5 -translate-y-8">
+                <div className="absolute inset-0 rounded-full bg-primary/5 blur-2xl animate-pulse"></div>
                 <div className="text-primary flex flex-col items-center relative z-10">
-                  <span className="material-symbols-outlined text-5xl lg:text-7xl">
+                  <span className="material-symbols-outlined text-3xl lg:text-5xl">
                     deployed_code
                   </span>
-                  <span className="text-[10px] lg:text-sm uppercase font-black tracking-[0.4em] mt-4">
+                  <span className="text-[8px] lg:text-[10px] uppercase font-black tracking-[0.3em] mt-2">
                     CORE
                   </span>
                 </div>
@@ -312,18 +297,18 @@ const About = () => {
 
               {/* Orbital Ring */}
               <div
-                className="absolute top-1/2 left-1/2 w-[1100px] h-[450px] border-[3px] border-transparent rounded-[50%] transition-all duration-300"
+                className="absolute top-1/2 left-1/2 w-[1100px] h-[450px] border-2 border-transparent rounded-[50%] transition-all duration-300"
                 style={{
                   transform: "translate(-50%, -50%) rotateX(70deg)",
                   background:
-                    "linear-gradient(90deg, #FF5F38, #FF38A2, #135bec, #FF5F38)",
+                    "linear-gradient(90deg, rgba(255,95,56,0.3), rgba(255,56,162,0.3), rgba(19,91,236,0.3))",
                   WebkitMask:
                     "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                   WebkitMaskComposite: "xor",
                   maskComposite: "exclude",
-                  padding: "3px",
-                  opacity: orbitalOpacity,
-                  filter: `blur(${orbitalBlur}px)`,
+                  padding: "2px",
+                  opacity: orbitalOpacity * 0.8,
+                  filter: `blur(${orbitalBlur * 0.5}px)`,
                 }}
               />
 
@@ -338,68 +323,121 @@ const About = () => {
               ))}
             </div>
 
-            {/* Info Panel */}
-            <div className="w-full lg:w-[420px] glass-card rounded-3xl p-8 lg:p-10 relative overflow-hidden shadow-2xl z-90">
-              {/* Watermark */}
-              <div className="absolute top-0 right-0 p-4">
-                <span className="text-[60px] font-black text-primary/10 select-none leading-none">
-                  {(activeIndex + 1).toString().padStart(2, "0")}
-                </span>
-              </div>
+            <div className="flex flex-col gap-4 items-center w-full max-w-2xl mx-auto z-30 mt-64 md:mt-30 relative">
+              {/* Info Panel - Subtle Glass */}
+              <div
+                className="w-full rounded-2xl p-4 lg:p-6 relative overflow-visible shadow-[0_10px_30px_rgba(0,0,0,0.06)] max-w-md border border-primary/5"
+                style={{
+                  background: "rgba(255, 255, 255, 0.7)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                }}
+              >
+                {/* Watermark */}
+                <div className="absolute top-0 right-0 p-3">
+                  <span className="text-[32px] font-black text-primary/5 select-none leading-none">
+                    {(activeIndex + 1).toString().padStart(2, "0")}
+                  </span>
+                </div>
 
-              <AnimatePresence mode="popLayout">
-                <motion.div
-                  key={activeIndex}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20, position: "absolute" }}
-                  transition={{
-                    duration: 0.4,
-                    ease: "easeOut",
-                  }}
-                >
-                  <h3 className="text-3xl font-black mb-4 flex items-center gap-3">
-                    <span className="text-accent-fire">
-                      {steps[activeIndex].title}
-                    </span>
-                  </h3>
-                  <p className="text-gray-500 dark:text-gray-600 leading-relaxed mb-8">
-                    {steps[activeIndex].desc}
-                  </p>
-                  <motion.ul
-                    className="space-y-4"
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                      visible: { transition: { staggerChildren: 0.08 } },
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={activeIndex}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15, position: "absolute" }}
+                    transition={{
+                      duration: 0.3,
+                      ease: "easeOut",
                     }}
                   >
-                    {steps[activeIndex].points.map((point, i) => (
-                      <motion.li
-                        key={i}
-                        className="flex items-start gap-3"
-                        variants={{
-                          hidden: { opacity: 0, x: -10 },
-                          visible: { opacity: 1, x: 0 },
-                        }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                      >
-                        <span className="material-symbols-outlined text-sunset-pink text-xl">
-                          check_circle
-                        </span>
-                        <span className="text-sm font-semibold text-gray-600 dark:text-gray-600">
-                          {point}
-                        </span>
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                </motion.div>
-              </AnimatePresence>
+                    <h3 className="text-2xl font-black mb-2 flex items-center gap-3">
+                      <span className="text-accent-fire">
+                        {steps[activeIndex].title}
+                      </span>
+                    </h3>
+                    <p className="text-gray-500 dark:text-gray-400 leading-relaxed mb-4 text-xs font-medium">
+                      {steps[activeIndex].desc}
+                    </p>
+                    <motion.ul
+                      className="grid grid-cols-2 gap-x-4 gap-y-2"
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        visible: { transition: { staggerChildren: 0.05 } },
+                      }}
+                    >
+                      {steps[activeIndex].points.map((point, i) => (
+                        <motion.li
+                          key={i}
+                          className="flex items-center gap-2"
+                          variants={{
+                            hidden: { opacity: 0, x: -5 },
+                            visible: { opacity: 1, x: 0 },
+                          }}
+                        >
+                          <span className="size-1 rounded-full bg-sunset-pink" />
+                          <span className="text-[10px] font-bold text-gray-600 dark:text-gray-500 uppercase tracking-tight">
+                            {point}
+                          </span>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-              <div
-                className="absolute bottom-0 left-0 h-1.5 bg-linear-to-r from-accent-fire to-sunset-pink transition-all duration-1000 ease-out"
-                style={{ width: `${((activeIndex + 1) / 8) * 100}%` }}
-              />
+              {/* Navigation Controls - Minimal row with Dots + Active Number */}
+              <div className="flex items-center gap-2 md:gap-6 z-100 px-6 py-3">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() =>
+                    setActiveIndex(
+                      (prev) => (prev - 1 + steps.length) % steps.length,
+                    )
+                  }
+                  className="size-11 rounded-full flex items-center justify-center bg-white/90 shadow-[0_4px_10px_rgba(0,0,0,0.1)] text-primary border border-primary/5 transition-all"
+                >
+                  <span className="material-symbols-outlined text-xl">
+                    west
+                  </span>
+                </motion.button>
+
+                <div className="flex items-center gap-1.5 md:gap-3">
+                  {steps.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveIndex(idx)}
+                      className="relative flex items-center justify-center p-1.5"
+                    >
+                      {activeIndex === idx ? (
+                        <motion.span
+                          layoutId="active-num"
+                          className="text-sm font-black text-accent-fire scale-110"
+                        >
+                          {(idx + 1).toString().padStart(2, "0")}
+                        </motion.span>
+                      ) : (
+                        <span className="size-1.5 rounded-full bg-primary/20 hover:bg-primary/40 transition-colors" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() =>
+                    setActiveIndex((prev) => (prev + 1) % steps.length)
+                  }
+                  className="size-11 rounded-full flex items-center justify-center bg-white/90 shadow-[0_4px_10px_rgba(0,0,0,0.1)] text-primary border border-primary/5 transition-all"
+                >
+                  <span className="material-symbols-outlined text-xl">
+                    east
+                  </span>
+                </motion.button>
+              </div>
             </div>
           </div>
         </div>
@@ -412,7 +450,7 @@ const About = () => {
           <div className="relative overflow-hidden rounded-[3rem] py-32 px-10 shadow-2xl glass-quote-bg">
             {/* Design Watermark */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
-              <span className="text-[24vw] font-black leading-none tracking-tighter uppercase whitespace-nowrap quote-watermark">
+              <span className="text-[18vw] font-black leading-none tracking-tighter uppercase whitespace-nowrap quote-watermark opacity-[0.02]">
                 OFZEN
               </span>
             </div>

@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 @import "tailwindcss";
-
 
 @theme {
   --color-primary: #135bec;
-  --color-accent-fire: #FF5F38;
-  --color-sunset-pink: #FF38A2;
+  --color-accent-fire: #ff5f38;
+  --color-sunset-pink: #ff38a2;
   --color-background-light: #f6f6f8;
   --color-background-dark: #101622;
 
@@ -25,12 +24,12 @@
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3)
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
   .dark .glass-nav {
     background: rgba(16, 22, 34, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1)
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .glass-card {
@@ -53,8 +52,20 @@
   }
 
   .marquee-track {
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent
+    );
   }
 
   @keyframes scroll {
@@ -72,14 +83,32 @@
   }
 
   .pearlescent-bg {
-    background: radial-gradient(circle at 0% 0%, rgba(19, 91, 236, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 100% 100%, rgba(255, 95, 56, 0.05) 0%, transparent 50%),
+    background:
+      radial-gradient(
+        circle at 0% 0%,
+        rgba(19, 91, 236, 0.05) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        rgba(255, 95, 56, 0.05) 0%,
+        transparent 50%
+      ),
       linear-gradient(135deg, #f6f6f8 0%, #e9edf5 100%);
   }
 
   .dark .pearlescent-bg {
-    background: radial-gradient(circle at 0% 0%, rgba(19, 91, 236, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 100% 100%, rgba(255, 95, 56, 0.05) 0%, transparent 50%),
+    background:
+      radial-gradient(
+        circle at 0% 0%,
+        rgba(19, 91, 236, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        rgba(255, 95, 56, 0.05) 0%,
+        transparent 50%
+      ),
       #101622;
   }
 
@@ -100,13 +129,18 @@
     height: 200%;
     top: -50%;
     left: -50%;
-    background: url('https://www.transparenttextures.com/patterns/cubes.png');
+    background: url("https://www.transparenttextures.com/patterns/cubes.png");
     opacity: 0.03;
     pointer-events: none;
   }
 
   .glow-bg {
-    background: radial-gradient(circle, rgba(19, 91, 236, 0.4) 0%, rgba(255, 56, 162, 0.3) 50%, rgba(255, 255, 255, 0) 70%);
+    background: radial-gradient(
+      circle,
+      rgba(19, 91, 236, 0.4) 0%,
+      rgba(255, 56, 162, 0.3) 50%,
+      rgba(255, 255, 255, 0) 70%
+    );
     transition: opacity 0.5s ease;
     opacity: 0;
     z-index: -1;
@@ -130,7 +164,7 @@
     pointer-events: none;
     opacity: 0.03;
     z-index: 50;
-    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAxvWvN_FXBTpUa7UZuFvOOUzPLqwXDU4yvCrasOeNVwIfT5H3e7MBNaSTfLU6Fknqjc8IMmniISVNUbzB4d4WpG6eGLEKX_CRiFfZNdAXCiee8gqDsUcy4_VCGuSeqfCYjpHG_NQMbHfhW4bzmghArC8uoJ78NZ3Ez9GfRgO3qVT4qY578J66Gw9MGUoy0_9arVHy7XzuhpV5bbW_jdyF275OyPmFxKZPnoTb4YpkQPFafdWEcZjQo8vrutPuOBkyNapdLoy9Ft5Zp)
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAxvWvN_FXBTpUa7UZuFvOOUzPLqwXDU4yvCrasOeNVwIfT5H3e7MBNaSTfLU6Fknqjc8IMmniISVNUbzB4d4WpG6eGLEKX_CRiFfZNdAXCiee8gqDsUcy4_VCGuSeqfCYjpHG_NQMbHfhW4bzmghArC8uoJ78NZ3Ez9GfRgO3qVT4qY578J66Gw9MGUoy0_9arVHy7XzuhpV5bbW_jdyF275OyPmFxKZPnoTb4YpkQPFafdWEcZjQo8vrutPuOBkyNapdLoy9Ft5Zp);
   }
 
   .watermark-text {
@@ -139,6 +173,15 @@
     letter-spacing: -0.05em;
     line-height: 0.8;
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.02);
+  }
+}
+
+.orbit-container {
+  --persp: 800px;
+}
+@media (min-width: 768px) {
+  .orbit-container {
+    --persp: 2000px;
   }
 }
 
