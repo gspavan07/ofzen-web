@@ -97,7 +97,7 @@ const Team = () => {
   const activeMember = teamData[activeIndex];
 
   return (
-    <div className="relative w-full overflow-hidden bg-[#f5f5f5] py-32 mt-22 font-sans isolate">
+    <div className="relative w-full overflow-hidden bg-[#f5f5f5] md:pb-32 lg:py-32 mt-22 font-sans isolate">
       {/* 1. Backdrop Layers */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
         {/* Giant Watermark Name */}
@@ -105,13 +105,29 @@ const Team = () => {
           <motion.div
             key={`text-${activeIndex}`}
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 0.2, scale: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 1 }}
-            className="absolute top-1/6 w-[150vw] text-center font-black text-slate-900 uppercase tracking-widest leading-none select-none z-0"
-            style={{ fontSize: "clamp(100px, 15vw, 300px)" }}
+            transition={{ duration: 0.7 }}
+            className="mb-72 md:mb-60 lg:mb-40 w-fit z-0 flex flex-col items-start"
           >
-            {activeMember.name.split(" ")[0]}
+            {/* Giant Watermark */}
+            <div
+              className="
+                w-full text-center m-0 p-0 font-black text-slate-900 uppercase tracking-widest leading-none select-none opacity-20
+                text-[0px]
+                md:text-[140px]
+                lg:text-[240px]
+            "
+            >
+              {activeMember.name.split(" ")[0]}
+            </div>
+
+            {/* Left Title BELOW it */}
+            <div className="mt-2 ml-2 z-30">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-black max-w-[120px]">
+                {activeMember.name}
+              </h2>
+            </div>
           </motion.div>
         </AnimatePresence>
 
@@ -122,13 +138,13 @@ const Team = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute bottom-0 w-[700px] h-[700px] flex items-end justify-center z-10 mask-image-bottom"
+            transition={{ duration: 0.7 }}
+            className="absolute bottom-0 w-[500px] h-[500px] md:w-[600px] md:h-[600px] lg:w-[700px] lg:h-[700px] flex items-end justify-center z-10 mask-image-bottom"
           >
             <img
               src={activeMember.bgImage}
               alt="bg"
-              className="object-contain min-h-[700px] max-h-[700px] object-bottom grayscale hover:grayscale-0 transition-all duration-700 pointer-events-auto cursor-pointer"
+              className="object-contain min-h-[500px] max-h-[500px] md:min-h-[600px] md:max-h-[600px] lg:min-h-[700px] lg:max-h-[700px] object-bottom grayscale hover:grayscale-0 transition-all duration-700 pointer-events-auto cursor-pointer"
               style={{
                 maskImage: "linear-gradient(to top, transparent, black 50%)",
                 WebkitMaskImage:
@@ -139,30 +155,23 @@ const Team = () => {
         </AnimatePresence>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-8 relative z-20 h-[500px] flex items-center pointer-events-none">
-        {/* Left 'Team members' title */}
-        <div className="absolute left-24 lg:left-40 top-1/2 -translate-y-full z-30">
-          <h2 className="text-xl sm:text-2xl font-bold text-black  max-w-[120px]">
-            {activeMember.name}
-          </h2>
-        </div>
-
+      <div className="w-full mx-auto px-8 z-20 h-[500px] flex items-end pointer-events-none">
         {/* Active Member Role & Navigation Container */}
-        <div className="w-full flex justify-center items-center relative xl:px-40 mt-[180px] md:mt-[940px]">
+        <div className="w-full flex relative justify-center items-center">
           <motion.div
             key={`info-${activeIndex}`}
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: -200, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="absolute bottom-[-60px] left-1/2 -translate-x-1/2 w-[420px]"
+            className="absolute -bottom-40 md:bottom-[-280px] left-1/2 -translate-x-1/2 w-[300px] md:w-[500px] lg:w-[820px]"
           >
-            <div className="pr-2 mb-4">
-              <p className="text-3xl font-bold text-gray-700 text-center uppercase pb-10">
+            {/* Role */}
+            <div className="mb-4">
+              <p className="text-2xl md:text-3xl lg:text-5xl font-bold text-gray-700 text-center uppercase pb-5">
                 {activeMember.role}
               </p>
             </div>
-
             {/* Navigation Buttons Capsule */}
             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center bg-primary rounded-full overflow-hidden shadow-xl pointer-events-auto">
               <button
