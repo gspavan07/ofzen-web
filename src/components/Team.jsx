@@ -1,21 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Instagram,
-  Twitter,
-  Facebook,
-  Dribbble,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import charanImg from "../assets/team/charan.jpeg";
-import pavanImg from "../assets/team/pavan.jpeg";
-import sunilImg from "../assets/team/sunil.jpeg";
-import sandeepImg from "../assets/team/sandeep.jpeg";
-import krishnaImg from "../assets/team/krishna.jpeg";
-import nareenImg from "../assets/team/nareen.jpeg";
-import dheeruImg from "../assets/team/dheeru.jpeg";
 import dheeruBgImg from "../assets/team/dheeru_bg.png";
 import nareenBgImg from "../assets/team/nareen_bg.png";
 import krishnaBgImg from "../assets/team/krishna_bg.png";
@@ -29,57 +15,36 @@ const teamData = [
     name: "Charan Tej",
     role: "Product Design Lead",
     bgImage: charanBgImg,
-    avatarImage: charanImg,
-    fallbackImage: "https://i.pravatar.cc/300?img=12",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
   },
   {
     name: "Sunil Garbana",
     role: "Chief Technology Officer (CTO)",
     bgImage: sunilBgImg,
-    avatarImage: sunilImg,
-    fallbackImage: "https://i.pravatar.cc/300?img=13",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
   },
   {
     name: "Pavan Gollapalli",
     role: "Founder & CEO",
     bgImage: pavanBgImg,
-    avatarImage: pavanImg,
-    fallbackImage: "https://i.pravatar.cc/300?img=11",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
   },
   {
     name: "Sandeep Jakka",
     role: "Chief Operating Officer (COO)",
     bgImage: sandeepBgImg,
-    avatarImage: sandeepImg,
-    fallbackImage: "https://i.pravatar.cc/300?img=14",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
   },
   {
     name: "Krishna Bhagavan",
     role: "AI Engineer",
     bgImage: krishnaBgImg,
-    avatarImage: krishnaImg,
-    fallbackImage: "https://i.pravatar.cc/300?img=15",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
   },
   {
     name: "Nareen Kumar",
     role: "Chief Information Security Officer",
     bgImage: nareenBgImg,
-    avatarImage: nareenImg,
-    fallbackImage: "https://i.pravatar.cc/300?img=16",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
   },
   {
     name: "Dheeraj Bathi",
     role: "Head of Product & Quality Assurance",
     bgImage: dheeruBgImg,
-    avatarImage: dheeruImg,
-    fallbackImage: "https://i.pravatar.cc/300?img=17",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
   },
 ];
 
@@ -97,7 +62,7 @@ const Team = () => {
   const activeMember = teamData[activeIndex];
 
   return (
-    <div className="relative w-full overflow-hidden bg-[#f5f5f5] md:pb-32 lg:py-32 mt-22 font-sans isolate">
+    <div className="relative w-full overflow-hidden bg-[#f5f5f5] md:py-32 py-20 mt-22 font-sans isolate">
       {/* 1. Backdrop Layers */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
         {/* Giant Watermark Name */}
@@ -108,13 +73,13 @@ const Team = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.05 }}
             transition={{ duration: 0.7 }}
-            className="mb-72 md:mb-60 lg:mb-40 w-fit z-0 flex flex-col items-start"
+            className="mb-[360px] md:mb-60 lg:mb-40 w-fit z-0 flex flex-col items-start"
           >
             {/* Giant Watermark */}
             <div
               className="
                 w-full text-center m-0 p-0 font-black text-slate-900 uppercase tracking-widest leading-none select-none opacity-20
-                text-[0px]
+                text-[70px]
                 md:text-[140px]
                 lg:text-[240px]
             "
@@ -124,7 +89,7 @@ const Team = () => {
 
             {/* Left Title BELOW it */}
             <div className="mt-2 ml-2 z-30">
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-black max-w-[120px]">
+              <h2 className="text-[0px] md:text-2xl lg:text-3xl font-bold text-black max-w-[120px]">
                 {activeMember.name}
               </h2>
             </div>
@@ -164,11 +129,11 @@ const Team = () => {
             animate={{ opacity: 1, y: -200, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="absolute -bottom-40 md:bottom-[-280px] left-1/2 -translate-x-1/2 w-[300px] md:w-[500px] lg:w-[820px]"
+            className="absolute -bottom-60 md:bottom-[-280px] left-1/2 -translate-x-1/2 w-[300px] md:w-[500px] lg:w-[820px]"
           >
             {/* Role */}
             <div className="mb-4">
-              <p className="text-2xl md:text-3xl lg:text-5xl font-bold text-gray-700 text-center uppercase pb-5">
+              <p className="text-3xl lg:text-5xl font-bold text-gray-700 text-center uppercase pb-5">
                 {activeMember.role}
               </p>
             </div>
