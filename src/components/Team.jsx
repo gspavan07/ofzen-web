@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import LazyImage from "./LazyImage";
 
 import dheeruBgImg from "../assets/team/dheeru_bg.png";
 import nareenBgImg from "../assets/team/nareen_bg.png";
@@ -106,14 +107,16 @@ const Team = () => {
             transition={{ duration: 0.7 }}
             className="absolute bottom-0 w-[500px] h-[500px] md:w-[600px] md:h-[600px] lg:w-[700px] lg:h-[700px] flex items-end justify-center z-10 mask-image-bottom"
           >
-            <img
+            <LazyImage
               src={activeMember.bgImage}
-              alt="bg"
+              alt={activeMember.name}
+              loading="eager"
               className="object-contain min-h-[500px] max-h-[500px] md:min-h-[600px] md:max-h-[600px] lg:min-h-[700px] lg:max-h-[700px] object-bottom grayscale hover:grayscale-0 transition-all duration-700 pointer-events-auto cursor-pointer"
               style={{
                 maskImage: "linear-gradient(to top, transparent, black 50%)",
                 WebkitMaskImage:
                   "linear-gradient(to top, transparent, black 50%)",
+                transition: "opacity 0.45s ease, filter 1.2s ease",
               }}
             />
           </motion.div>

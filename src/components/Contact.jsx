@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import LazyImage from "./LazyImage";
 import sivajiImg from "../assets/clients/sivaji.jpg";
 import ramasriImg from "../assets/clients/ramaSri.jpg";
 import krishna2Img from "../assets/clients/krishnaKoyya.png";
@@ -109,10 +110,13 @@ const Contact = () => {
               className={`glass-card p-6 rounded-4xl h-fit flex flex-col gap-6 shadow-xl relative ${t.offset ? "md:mt-48" : ""} ${t.set ? "md:-mt-38" : ""}`}
             >
               <div className="flex md:flex-col lg:flex-row items-center gap-4">
-                <img
+                <LazyImage
                   src={t.image}
                   alt={t.name}
-                  className="w-16 h-16 rounded-full object-cover aspect-square border-2 border-primary/30 shadow-md shrink-0"
+                  loading="lazy"
+                  containerClassName="w-16 h-16 rounded-full shrink-0"
+                  className="w-full h-full rounded-full border-2 border-primary/30 shadow-md"
+                  objectFit="cover"
                 />
                 <div>
                   <p className="text-lg font-black text-heading  leading-tight">

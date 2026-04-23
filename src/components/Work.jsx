@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import LazyImage from "./LazyImage";
 import Koyya from "../assets/Koyya.jpeg";
 import CodeTracker from "../assets/CodeTracker.jpeg";
 import SKC from "../assets/SKC.jpeg";
@@ -162,10 +163,12 @@ const Work = () => {
                 <div
                   className={`w-full h-full ${project.isPortrait ? "rounded-[1.6rem]" : "rounded-xl"} overflow-hidden relative bg-black/5 group-hover/card:shadow-inner transition-all duration-500`}
                 >
-                  <img
+                  <LazyImage
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-110"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    className="w-full h-full transition-transform duration-700 ease-out group-hover/card:scale-110"
+                    containerClassName="w-full h-full"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent pointer-events-none opacity-60 group-hover/card:opacity-40 transition-opacity duration-500" />
 

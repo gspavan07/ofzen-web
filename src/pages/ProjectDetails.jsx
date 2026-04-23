@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
+import LazyImage from "../components/LazyImage";
 import Koyya from "../assets/Koyya.jpeg";
 import Koyya1 from "../assets/Koyya1.png";
 import Koyya2 from "../assets/Koyya2.png";
@@ -131,10 +132,12 @@ const ProjectSlide = ({ project }) => {
           {/* Section 1: Image Left, Desc Right */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
             <div className="rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-4/3 bg-black/5">
-              <img
+              <LazyImage
                 src={project.image[0]}
-                alt="Process"
-                className="w-full h-full object-cover"
+                alt="The Vision"
+                loading="eager"
+                containerClassName="w-full h-full"
+                className="w-full h-full transition-transform duration-500 hover:scale-105"
               />
             </div>
             <div className="flex flex-col gap-4 md:gap-6">
@@ -158,10 +161,11 @@ const ProjectSlide = ({ project }) => {
               </p>
             </div>
             <div className="order-1 md:order-2 rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-4/3 bg-black/5">
-              <img
+              <LazyImage
                 src={project.image[1]}
-                alt="Impact"
-                className="w-full h-full object-cover"
+                alt="The Impact"
+                containerClassName="w-full h-full"
+                className="w-full h-full transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
@@ -169,10 +173,11 @@ const ProjectSlide = ({ project }) => {
           {/* Section 3: Image Left, Desc Right */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
             <div className="rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-4/3 bg-black/5">
-              <img
+              <LazyImage
                 src={project.image[2]}
-                alt="Future"
-                className="w-full h-full object-cover"
+                alt="Scalability"
+                containerClassName="w-full h-full"
+                className="w-full h-full transition-transform duration-500 hover:scale-105"
               />
             </div>
             <div className="flex flex-col gap-4 md:gap-6">
@@ -196,10 +201,11 @@ const ProjectSlide = ({ project }) => {
               </p>
             </div>
             <div className="order-1 md:order-2 rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-xl aspect-video md:aspect-4/3 bg-black/5">
-              <img
+              <LazyImage
                 src={project.image[3]}
                 alt="Integration"
-                className="w-full h-full object-cover"
+                containerClassName="w-full h-full"
+                className="w-full h-full transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
