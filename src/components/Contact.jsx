@@ -95,6 +95,41 @@ const FAQItem = ({ faq }) => {
 };
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!formData.name || !formData.email || !formData.message) {
+      return;
+    }
+
+    try {
+      const response = await fetch("https://formspree.io/f/xeevbnod", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      setFormData({ name: "", email: "", message: "" });
+      alert("Message sent successfully");
+    } catch (error) {
+      alert("Unable to send message. Please try again later.");
+      console.error(error);
+    }
+  };
+
   return (
     <section className="relative w-full overflow-hidden">
       {/* Testimonials */}
@@ -200,13 +235,19 @@ const Contact = () => {
             <h3 className="text-2xl font-black mb-10 text-heading tracking-tight">
               Say Hello
             </h3>
-            <form className="flex flex-col gap-8">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-8">
               <div className="relative group">
                 <label className="text-[10px] uppercase tracking-[0.3em] font-black text-primary mb-2 block">
                   Full Name
                 </label>
                 <input
+                  name="name"
                   type="text"
+                  required
+                  value={formData.name}
+                  onChange={(event) =>
+                    setFormData((prev) => ({ ...prev, name: event.target.value }))
+                  }
                   className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-black placeholder:text-subtext/30 transition-all font-bold"
                   placeholder="Enter your name"
                 />
@@ -216,7 +257,13 @@ const Contact = () => {
                   Email Address
                 </label>
                 <input
+                  name="email"
                   type="email"
+                  required
+                  value={formData.email}
+                  onChange={(event) =>
+                    setFormData((prev) => ({ ...prev, email: event.target.value }))
+                  }
                   className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-black placeholder:text-subtext/30 transition-all font-bold"
                   placeholder="email@example.com"
                 />
@@ -226,12 +273,19 @@ const Contact = () => {
                   Message
                 </label>
                 <textarea
+                  name="message"
+                  required
                   rows="3"
+                  value={formData.message}
+                  onChange={(event) =>
+                    setFormData((prev) => ({ ...prev, message: event.target.value }))
+                  }
                   className="w-full bg-transparent border-b-2 border-primary/10 focus:border-primary outline-none py-3 text-base text-heading dark:text-black placeholder:text-subtext/30 transition-all font-bold resize-none"
                   placeholder="Describe your project or idea — even rough notes are fine."
                 />
               </div>
               <motion.button
+                type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full bg-primary text-white font-black py-5 rounded-2xl mt-4 flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-primary/30 transition-all text-sm tracking-widest uppercase"
