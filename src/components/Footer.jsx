@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="bg-white/30 dark:bg-black/20 backdrop-blur-md border-t border-white/20 dark:border-white/10 py-12 px-10">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3">
           <div className="size-5 text-primary">
             <svg
               fill="none"
@@ -22,29 +23,30 @@ const Footer = () => {
           <span className="font-bold text-lg text-heading  leading-none">
             Ofzen
           </span>
-        </div>
+        </Link>
 
-        <p className="text-sm text-gray-500 dark:text-gray-500">
-          © 2026 Ofzen • All rights reserved • Built with intention. Delivered
-          with care. • ofzenenterprise@gmail.com
+        <p className="text-sm text-gray-500 ml-10 dark:text-gray-500">
+          © 2026 Ofzen Technologies. All rights reserved.
         </p>
 
         <div className="flex gap-6">
           <a
             className="text-gray-500 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest"
             href="https://www.linkedin.com/company/ofzen/"
+            target="_blank"
           >
             LinkedIn
           </a>
-          <a
+          {/* <a
             className="text-gray-500 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest"
             href="#"
           >
             X
-          </a>
+          </a> */}
           <a
             className="text-gray-500 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest"
             href="https://www.instagram.com/ofzen.dev?igsh=MW5lY2kyZGE1amNxYg=="
+            target="_blank"
           >
             Instagram
           </a>
