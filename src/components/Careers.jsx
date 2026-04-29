@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import InternshipDetailModal from "./careers/InternshipDetailModal";
 import ApplicationFormModal from "./careers/ApplicationFormModal";
 import SuccessModal from "./careers/SuccessModal";
+import { trackEvent } from "../utils/analytics";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -262,14 +263,19 @@ const Careers = () => {
     fetchInternships();
   }, []);
 
-  const handleViewDetails = (internship) => setDetailInternship(internship);
+  const handleViewDetails = (internship) => {
+    setDetailInternship(internship);
+    trackEvent("Careers", "View Details", internship.title);
+  };
 
   const handleProceedToApply = () => {
+    trackEvent("Careers", "Initiate Application", detailInternship?.title);
     setFormInternship(detailInternship);
     setDetailInternship(null);
   };
 
   const handlePaymentSuccess = () => {
+    trackEvent("Careers", "Application Successful", formInternship?.title);
     setSuccessInternship(formInternship);
     setFormInternship(null);
     setShowSuccess(true);
