@@ -19,14 +19,14 @@ const perks = [
     desc: "Your work ships to production and goes into actual client products.",
   },
   {
-    icon: "work_premium",
+    icon: "workspace_premium",
     title: "Certificate of Completion",
     desc: "Every intern receives an official certificate recognizing their successful completion and contributions.",
   },
   {
     icon: "devices",
-    title: "Remote Friendly",
-    desc: "Work from anywhere. We're fully remote-first with async-friendly workflows.",
+    title: "Flexible Work Options",
+    desc: "Work your way—remote, hybrid, or on-site. We support flexible, async-friendly workflows to suit your style.",
   },
 ];
 
@@ -427,7 +427,7 @@ const Careers = () => {
       </section>
 
       {/* ── Work Process Section ── */}
-      <section className="max-w-[1280px] mx-auto w-full px-6 py-16 bg-black/[0.02] rounded-[3rem] my-8">
+      <section className="max-w-[1280px] mx-auto w-full px-6 py-16 bg-black/2 rounded-[3rem] my-8">
         <div className="flex flex-col items-center text-center mb-16">
           <p className="text-primary text-xs font-black tracking-[0.3em] uppercase mb-4">
             The Journey

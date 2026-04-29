@@ -11,6 +11,8 @@ import { initGA, trackPageView } from "./utils/analytics";
 import MainPage from "./pages/MainPage";
 import ProjectDetails from "./pages/ProjectDetails";
 import CareersPage from "./pages/CareersPage";
+import VerifyCertificate from "./pages/VerifyCertificate";
+
 
 const AppContent = () => {
   const location = useLocation();
@@ -31,7 +33,9 @@ const AppContent = () => {
         <Route path="/" element={<MainPage />} />
         <Route path="/project/:slug" element={<ProjectDetails />} />
         <Route path="/careers" element={<CareersPage />} />
+        <Route path="/verify/:certificateId" element={<VerifyCertificate />} />
       </Routes>
+
     </AnimatePresence>
   );
 };
