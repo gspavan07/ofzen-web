@@ -18,14 +18,35 @@ const perks = [
     desc: "Your work ships to production and goes into actual client products.",
   },
   {
-    icon: "work_history",
-    title: "Letter of Recommendation",
-    desc: "Every intern gets a detailed LOR and a verified portfolio contribution.",
+    icon: "work_premium",
+    title: "Certificate of Completion",
+    desc: "Every intern receives an official certificate recognizing their successful completion and contributions.",
   },
   {
     icon: "devices",
     title: "Remote Friendly",
     desc: "Work from anywhere. We're fully remote-first with async-friendly workflows.",
+  },
+];
+
+const internshipPhases = [
+  {
+    phase: "Phase 01",
+    title: "Guided Learning & Mastery",
+    duration: "Weeks 1–4",
+    icon: "school",
+    desc: "Focus on mastering core technologies and internal workflows. Your mentor will provide curated topics and hands-on guidance to prepare you for production-level work.",
+    color: "from-blue-600/20 to-blue-400/5",
+    iconColor: "text-blue-600",
+  },
+  {
+    phase: "Phase 02",
+    title: "Applied Product Development",
+    duration: "Month 2 onwards",
+    icon: "terminal",
+    desc: "Transition to real-world client projects. Collaborate with our core team to develop, test, and ship production-ready features that impact real users.",
+    color: "from-indigo-600/20 to-indigo-400/5",
+    iconColor: "text-indigo-600",
   },
 ];
 
@@ -78,7 +99,10 @@ const SkeletonCard = ({ index }) => (
     </div>
     <div className="flex gap-2">
       {[1, 2, 3].map((i) => (
-        <div key={i} className="h-6 w-16 rounded-full bg-black/8 animate-pulse" />
+        <div
+          key={i}
+          className="h-6 w-16 rounded-full bg-black/8 animate-pulse"
+        />
       ))}
     </div>
     <div className="h-12 w-full rounded-2xl bg-black/8 animate-pulse mt-2" />
@@ -87,7 +111,9 @@ const SkeletonCard = ({ index }) => (
 
 // --- Position Card ---
 const PositionCard = ({ position, index, onViewDetails }) => {
-  const colorClass = domainColors[position.domain] ?? "text-primary bg-primary/5 border-primary/10";
+  const colorClass =
+    domainColors[position.domain] ??
+    "text-primary bg-primary/5 border-primary/10";
   const icon = domainIcons[position.domain] ?? "work";
 
   return (
@@ -108,7 +134,9 @@ const PositionCard = ({ position, index, onViewDetails }) => {
       <div className="flex items-start justify-between gap-4 relative z-10">
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${colorClass}`}>
+            <span
+              className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${colorClass}`}
+            >
               {position.domain}
             </span>
             {position.openings > 0 && (
@@ -117,10 +145,14 @@ const PositionCard = ({ position, index, onViewDetails }) => {
               </span>
             )}
           </div>
-          <h3 className="text-xl font-black text-heading leading-tight">{position.title}</h3>
+          <h3 className="text-xl font-black text-heading leading-tight">
+            {position.title}
+          </h3>
         </div>
         <div className="flex items-center justify-center size-12 rounded-2xl bg-primary/5 border border-primary/10 shrink-0">
-          <span className="material-symbols-outlined text-primary text-xl">{icon}</span>
+          <span className="material-symbols-outlined text-primary text-xl">
+            {icon}
+          </span>
         </div>
       </div>
 
@@ -128,19 +160,25 @@ const PositionCard = ({ position, index, onViewDetails }) => {
       <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-widest text-subtext relative z-10 flex-wrap">
         {position.durationWeeks && (
           <div className="flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-sm text-primary">schedule</span>
+            <span className="material-symbols-outlined text-sm text-primary">
+              schedule
+            </span>
             {position.durationWeeks} Weeks
           </div>
         )}
         {position.certificate && (
           <div className="flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-sm text-primary">workspace_premium</span>
+            <span className="material-symbols-outlined text-sm text-primary">
+              workspace_premium
+            </span>
             {position.certificate}
           </div>
         )}
         {position.fee !== undefined && position.fee !== null && (
           <div className="flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-sm text-primary">payments</span>
+            <span className="material-symbols-outlined text-sm text-primary">
+              payments
+            </span>
             ₹{position.fee.toLocaleString("en-IN")}
           </div>
         )}
@@ -181,7 +219,9 @@ const PositionCard = ({ position, index, onViewDetails }) => {
           className="w-full bg-primary text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 hover:shadow-xl hover:shadow-primary/20 transition-all text-sm tracking-widest uppercase cursor-pointer"
         >
           View Details & Apply
-          <span className="material-symbols-outlined text-lg">arrow_forward</span>
+          <span className="material-symbols-outlined text-lg">
+            arrow_forward
+          </span>
         </motion.button>
       </div>
     </motion.div>
@@ -196,7 +236,7 @@ const Careers = () => {
 
   // Modal state
   const [detailInternship, setDetailInternship] = useState(null); // opens detail modal
-  const [formInternship, setFormInternship] = useState(null);     // opens form modal
+  const [formInternship, setFormInternship] = useState(null); // opens form modal
   const [showSuccess, setShowSuccess] = useState(false);
   const [successInternship, setSuccessInternship] = useState(null);
 
@@ -208,7 +248,9 @@ const Careers = () => {
         const res = await fetch(`${API_BASE_URL}/api/public/internships`);
         if (!res.ok) throw new Error(`Server error: ${res.status}`);
         const data = await res.json();
-        const active = (data.internships ?? []).filter((i) => i.status === "active");
+        const active = (data.internships ?? []).filter(
+          (i) => i.status === "active",
+        );
         setInternships(active);
       } catch (err) {
         console.error("Failed to fetch internships:", err);
@@ -287,15 +329,17 @@ const Careers = () => {
             </span>
           </h1>
           <p className="text-base md:text-xl text-subtext font-normal leading-relaxed max-w-2xl">
-            We're a small, high-output team that ships real products. Join us as an intern or
-            collaborator and work on things that actually go live.
+            We're a small, high-output team that ships real products. Join us as
+            an intern or collaborator and work on things that actually go live.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
               href="#positions"
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById("positions")?.scrollIntoView({ behavior: "smooth" });
+                document
+                  .getElementById("positions")
+                  ?.scrollIntoView({ behavior: "smooth" });
               }}
               className="flex items-center gap-2 rounded-xl h-14 px-8 bg-primary text-white text-base font-bold transition-all hover:scale-[1.02] active:scale-95 shadow-2xl hover:shadow-primary/20 cursor-pointer"
             >
@@ -322,17 +366,23 @@ const Careers = () => {
             <span className="text-2xl font-black text-primary">
               {loading ? "—" : `${internships.length}+`}
             </span>
-            <span className="text-[10px] font-black text-subtext uppercase tracking-[0.2em]">Open Roles</span>
+            <span className="text-[10px] font-black text-subtext uppercase tracking-[0.2em]">
+              Open Roles
+            </span>
           </div>
           <div className="h-8 w-px bg-black/5" />
           <div className="flex flex-col items-center">
             <span className="text-2xl font-black text-primary">100%</span>
-            <span className="text-[10px] font-black text-subtext uppercase tracking-[0.2em]">Remote</span>
+            <span className="text-[10px] font-black text-subtext uppercase tracking-[0.2em]">
+              Remote
+            </span>
           </div>
           <div className="h-8 w-px bg-black/5" />
           <div className="flex flex-col items-center">
             <span className="text-2xl font-black text-primary">Real</span>
-            <span className="text-[10px] font-black text-subtext uppercase tracking-[0.2em]">Projects</span>
+            <span className="text-[10px] font-black text-subtext uppercase tracking-[0.2em]">
+              Projects
+            </span>
           </div>
         </motion.div>
       </section>
@@ -340,7 +390,9 @@ const Careers = () => {
       {/* ── Perks Section ── */}
       <section className="max-w-[1280px] mx-auto w-full px-6 py-16">
         <div className="flex flex-col items-center text-center mb-12">
-          <p className="text-primary text-xs font-black tracking-[0.3em] uppercase mb-4">Why Ofzen</p>
+          <p className="text-primary text-xs font-black tracking-[0.3em] uppercase mb-4">
+            Why Ofzen
+          </p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight max-w-2xl text-heading">
             What You Get Working With Us
           </h2>
@@ -356,16 +408,102 @@ const Careers = () => {
               whileHover={{ y: -5, borderColor: "#135bec" }}
               className="p-8 rounded-3xl border border-black/5 bg-white/20 backdrop-blur-sm flex flex-col gap-4 transition-all duration-500"
             >
-              <span className="material-symbols-outlined text-primary text-3xl">{perk.icon}</span>
+              <span className="material-symbols-outlined text-primary text-3xl">
+                {perk.icon}
+              </span>
               <h3 className="text-lg font-bold text-heading">{perk.title}</h3>
-              <p className="text-sm text-subtext leading-relaxed">{perk.desc}</p>
+              <p className="text-sm text-subtext leading-relaxed">
+                {perk.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Work Process Section ── */}
+      <section className="max-w-[1280px] mx-auto w-full px-6 py-16 bg-black/[0.02] rounded-[3rem] my-8">
+        <div className="flex flex-col items-center text-center mb-16">
+          <p className="text-primary text-xs font-black tracking-[0.3em] uppercase mb-4">
+            The Journey
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight text-heading">
+            Our Internship Roadmap
+          </h2>
+          <p className="text-base text-subtext mt-4 max-w-lg">
+            We've structured our internship to transform you from a learner to a
+            professional developer through two distinct phases.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+          {/* Connector Line (Desktop) */}
+          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-px bg-black/10 z-0" />
+
+          {internshipPhases.map((phase, i) => (
+            <motion.div
+              key={phase.title}
+              initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.2, ease: "easeOut" }}
+              className="relative group"
+            >
+              <div
+                className={`h-full p-10 rounded-[2.5rem] border border-black/5 bg-linear-to-br ${phase.color} backdrop-blur-xl flex flex-col gap-6 transition-all duration-500 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full bg-white text-heading border border-black/5 shadow-sm">
+                    {phase.phase}
+                  </span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-primary/60 bg-primary/5 px-3 py-1 rounded-lg">
+                    {phase.duration}
+                  </span>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-4">
+                    <div
+                      className={`size-14 rounded-2xl bg-white shadow-sm flex items-center justify-center ${phase.iconColor}`}
+                    >
+                      <span className="material-symbols-outlined text-3xl">
+                        {phase.icon}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-black text-heading">
+                      {phase.title}
+                    </h3>
+                  </div>
+                  <p className="text-base text-subtext leading-relaxed">
+                    {phase.desc}
+                  </p>
+                </div>
+
+                {/* Progress Indicator */}
+                <div className="mt-auto pt-6 flex items-center gap-3">
+                  <div className="flex-1 h-1 rounded-full bg-black/5 overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.5, delay: 0.5 + i * 0.3 }}
+                      className="h-full bg-primary"
+                    />
+                  </div>
+                  <span className="text-[10px] font-black text-primary/40 uppercase">
+                    {i === 0 ? "50%" : "Complete"}
+                  </span>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* ── Open Positions ── */}
-      <section id="positions" className="max-w-[1280px] mx-auto w-full px-6 py-16 pb-32">
+      <section
+        id="positions"
+        className="max-w-[1280px] mx-auto w-full px-6 py-16 pb-32"
+      >
         <div className="flex flex-col items-center text-center mb-12">
           <p className="text-primary text-xs font-black tracking-[0.3em] uppercase mb-4">
             Current Openings
@@ -374,14 +512,17 @@ const Careers = () => {
             Open Positions
           </h2>
           <p className="text-base text-subtext mt-4 max-w-lg">
-            All roles are remote. Click any role to view full details and apply online.
+            All roles are remote. Click any role to view full details and apply
+            online.
           </p>
         </div>
 
         {/* Loading */}
         {loading && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[0, 1].map((i) => <SkeletonCard key={i} index={i} />)}
+            {[0, 1].map((i) => (
+              <SkeletonCard key={i} index={i} />
+            ))}
           </div>
         )}
 
@@ -392,14 +533,18 @@ const Careers = () => {
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-col items-center justify-center py-24 gap-4"
           >
-            <span className="material-symbols-outlined text-5xl text-red-400">wifi_off</span>
+            <span className="material-symbols-outlined text-5xl text-red-400">
+              wifi_off
+            </span>
             <p className="text-subtext font-medium">{fetchError}</p>
             <button
               onClick={() => window.location.reload()}
               className="text-primary font-black text-sm uppercase tracking-widest flex items-center gap-2 hover:underline"
             >
               Retry
-              <span className="material-symbols-outlined text-base">refresh</span>
+              <span className="material-symbols-outlined text-base">
+                refresh
+              </span>
             </button>
           </motion.div>
         )}
@@ -421,8 +566,12 @@ const Careers = () => {
         {/* Empty */}
         {!loading && !fetchError && internships.length === 0 && (
           <div className="flex flex-col items-center justify-center py-24 gap-4">
-            <span className="material-symbols-outlined text-5xl text-subtext/30">inbox</span>
-            <p className="text-subtext font-medium">No open positions right now. Check back soon.</p>
+            <span className="material-symbols-outlined text-5xl text-subtext/30">
+              inbox
+            </span>
+            <p className="text-subtext font-medium">
+              No open positions right now. Check back soon.
+            </p>
           </div>
         )}
 
@@ -435,14 +584,17 @@ const Careers = () => {
           className="mt-16 flex flex-col items-center text-center gap-4"
         >
           <p className="text-sm text-subtext max-w-md">
-            Don't see a role that fits? We're always open to hearing from talented people.
+            Don't see a role that fits? We're always open to hearing from
+            talented people.
           </p>
           <a
             href="mailto:careers@ofzen.in?subject=General%20Application%20–%20Ofzen"
             className="text-primary font-black text-sm uppercase tracking-widest flex items-center gap-2 transition-all"
           >
             <span className="hover:underline">Send a General Application</span>
-            <span className="material-symbols-outlined text-base">arrow_forward</span>
+            <span className="material-symbols-outlined text-base">
+              arrow_forward
+            </span>
           </a>
         </motion.div>
       </section>

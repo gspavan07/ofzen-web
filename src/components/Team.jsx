@@ -39,7 +39,7 @@ const teamData = [
   },
   {
     name: "Nareen Kumar",
-    role: "Chief Information Security Officer",
+    role: "Chief Information Security Officer (CISO)",
     bgImage: nareenBgImg,
   },
   {
