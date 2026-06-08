@@ -82,7 +82,7 @@ const Navbar = () => {
             </svg>
           </div>
           <h2 className="text-heading text-xl font-bold tracking-tight leading-none">
-            Ofzen
+            Ofzen Technologies
           </h2>
         </div>
 

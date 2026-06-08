@@ -21,13 +21,18 @@ const Footer = () => {
             </svg>
           </div>
           <span className="font-bold text-lg text-heading  leading-none">
-            Ofzen
+            Ofzen Technologies
           </span>
         </Link>
 
-        <p className="text-sm text-gray-500 ml-10 dark:text-gray-500">
-          © 2026 Ofzen Technologies. All rights reserved.
-        </p>
+        <div className="flex flex-col items-center gap-1">
+          <p className="text-sm text-gray-500 dark:text-gray-500">
+            © 2026 Ofzen Technologies. All rights reserved.
+          </p>
+          <Link to="/privacy-policy" className="text-xs text-gray-400 hover:text-primary transition-colors">
+            Privacy Policy
+          </Link>
+        </div>
 
         <div className="flex gap-6">
           <a

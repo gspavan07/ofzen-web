@@ -12,6 +12,7 @@ import MainPage from "./pages/MainPage";
 import ProjectDetails from "./pages/ProjectDetails";
 import CareersPage from "./pages/CareersPage";
 import VerifyCertificate from "./pages/VerifyCertificate";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 
 const AppContent = () => {
@@ -34,6 +35,7 @@ const AppContent = () => {
         <Route path="/project/:slug" element={<ProjectDetails />} />
         <Route path="/careers" element={<CareersPage />} />
         <Route path="/verify/:certificateId" element={<VerifyCertificate />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
 
     </AnimatePresence>
