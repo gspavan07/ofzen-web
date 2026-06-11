@@ -24,17 +24,17 @@ const teamData = [
   },
   {
     name: "Sandeep Jakka",
-    role: "Chief Operating Officer (COO)",
+    role: "Chief Marketing Officer (CMO)",
     bgImage: sandeepBgImg,
   },
   {
     name: "Sunil Garbana",
-    role: "Front-end Development Lead",
+    role: "Lead Developer",
     bgImage: sunilBgImg,
   },
   {
     name: "Charan Tej",
-    role: "Product Design Lead",
+    role: "Head of Product Design",
     bgImage: charanBgImg,
   },
   {
@@ -44,7 +44,7 @@ const teamData = [
   },
   {
     name: "Nareen Kumar",
-    role: "Chief Information Security Officer (CISO)",
+    role: "DevSecOps Engineer",
     bgImage: nareenBgImg,
   },
 ];
