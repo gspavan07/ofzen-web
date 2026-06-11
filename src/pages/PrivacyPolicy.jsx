@@ -23,7 +23,7 @@ const Section = ({ title, children, delay = 0 }) => (
 );
 
 const PrivacyPolicy = () => {
-  const effectiveDate = "June 1, 2025";
+  const effectiveDate = "June 1, 2026";
   const companyEmail = "support@ofzen.in";
   const companyName = "Ofzen Technologies";
   const website = "https://ofzen.in";
@@ -36,9 +36,9 @@ const PrivacyPolicy = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="text-[20vw] md:text-[25vw] font-black text-black/[0.02] leading-none tracking-tighter uppercase select-none"
+          className="text-[20vw] md:text-[25vw] font-black text-black/10 leading-none tracking-tighter uppercase select-none"
         >
-          PRIVACY
+          Ofzen
         </motion.span>
       </div>
 
@@ -68,8 +68,8 @@ const PrivacyPolicy = () => {
               </h1>
               <p className="text-heading/60 text-base md:text-lg max-w-2xl leading-relaxed">
                 At {companyName}, your privacy is not an afterthought — it's a
-                foundation. This policy explains how we collect, use, and protect
-                your information when you visit{" "}
+                foundation. This policy explains how we collect, use, and
+                protect your information when you visit{" "}
                 <a
                   href={website}
                   className="text-primary hover:underline"
@@ -92,8 +92,12 @@ const PrivacyPolicy = () => {
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
-              className="h-px bg-gradient-to-r from-primary/30 via-primary/10 to-transparent mt-10 mb-14 origin-left"
+              transition={{
+                duration: 0.8,
+                delay: 0.3,
+                ease: [0.23, 1, 0.32, 1],
+              }}
+              className="h-px bg-linear-to-r from-primary/30 via-primary/10 to-transparent mt-10 mb-14 origin-left"
             />
           </div>
         </section>
@@ -115,9 +119,10 @@ const PrivacyPolicy = () => {
                   TL;DR — Quick Summary
                 </p>
                 <p className="text-heading/70 text-sm leading-relaxed">
-                  We collect only what's necessary to run our website and respond
-                  to your enquiries. We do not sell your data. We use cookies for
-                  analytics. You can contact us anytime to request data deletion.
+                  We collect only what's necessary to run our website and
+                  respond to your enquiries. We do not sell your data. We use
+                  cookies for analytics. You can contact us anytime to request
+                  data deletion.
                 </p>
               </motion.div>
 
@@ -126,7 +131,8 @@ const PrivacyPolicy = () => {
                   {companyName} (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or
                   &ldquo;our&rdquo;) is a digital engineering and product studio
                   based in India. We design and build web apps, mobile
-                  applications, and custom software for startups and enterprises.
+                  applications, and custom software for startups and
+                  enterprises.
                 </p>
                 <p>
                   Our website is{" "}
@@ -272,8 +278,7 @@ const PrivacyPolicy = () => {
                     },
                     {
                       name: "LinkedIn / Instagram",
-                      purpose:
-                        "Social media presence linked from our website",
+                      purpose: "Social media presence linked from our website",
                       link: null,
                     },
                   ].map((svc) => (
@@ -305,8 +310,8 @@ const PrivacyPolicy = () => {
               <Section title="6. Data Retention" delay={0.18}>
                 <p>
                   We retain personal information only as long as necessary to
-                  fulfil the purposes described in this policy, or as required by
-                  applicable law. Contact form submissions are retained for a
+                  fulfil the purposes described in this policy, or as required
+                  by applicable law. Contact form submissions are retained for a
                   maximum of 12 months unless a business relationship is
                   established.
                 </p>
@@ -358,9 +363,10 @@ const PrivacyPolicy = () => {
               <Section title="9. Children's Privacy" delay={0.24}>
                 <p>
                   Our website and services are not directed to individuals under
-                  the age of 13. We do not knowingly collect personal information
-                  from children. If you believe we have inadvertently collected
-                  such information, please contact us immediately at{" "}
+                  the age of 13. We do not knowingly collect personal
+                  information from children. If you believe we have
+                  inadvertently collected such information, please contact us
+                  immediately at{" "}
                   <a
                     href={`mailto:${companyEmail}`}
                     className="text-primary hover:underline"
@@ -380,15 +386,16 @@ const PrivacyPolicy = () => {
                 </p>
                 <p>
                   We encourage you to review this policy periodically. Continued
-                  use of our website after changes constitutes your acceptance of
-                  the revised policy.
+                  use of our website after changes constitutes your acceptance
+                  of the revised policy.
                 </p>
               </Section>
 
               <Section title="11. Contact Us" delay={0.28}>
                 <p>
-                  If you have any questions, concerns, or requests regarding this
-                  Privacy Policy or our data practices, please reach out to us:
+                  If you have any questions, concerns, or requests regarding
+                  this Privacy Policy or our data practices, please reach out to
+                  us:
                 </p>
                 <div className="mt-5 inline-flex flex-col gap-2 bg-primary/5 border border-primary/15 rounded-xl px-6 py-5">
                   <p className="font-black text-heading text-base">

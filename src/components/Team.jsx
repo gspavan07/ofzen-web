@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import LazyImage from "./LazyImage";
 
 import dheeruBgImg from "../assets/team/dheeru_bg.png";
@@ -49,117 +49,132 @@ const teamData = [
   },
 ];
 
+const TeamCard = ({ member }) => {
+  return (
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 18,
+          },
+        },
+      }}
+      className="group relative w-full aspect-4/5 sm:aspect-3/4 rounded-3xl overflow-hidden bg-slate-100 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 shadow-md hover:shadow-xl transition-all duration-500 hover:scale-[1.02]"
+    >
+      {/* Background Subtle Gradient Overlay */}
+      <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/60 opacity-60 group-hover:opacity-85 transition-opacity duration-500 z-10" />
+
+      {/* Image */}
+      <LazyImage
+        src={member.bgImage}
+        alt={member.name}
+        loading="lazy"
+        containerClassName="w-full h-full"
+        className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105 grayscale group-hover:grayscale-0"
+        objectFit="cover"
+        style={{ objectPosition: "top" }}
+      />
+
+      {/* Glassmorphic Capsule */}
+      <div className="absolute bottom-4 left-4 right-4 bg-white/95 dark:bg-background-dark/90 backdrop-blur-md p-3.5 rounded-2xl border border-white/20 dark:border-white/10 shadow-lg transition-all duration-300 group-hover:border-primary/30 z-20">
+        <h3 className="text-sm md:text-base font-bold text-heading dark:text-white leading-tight">
+          {member.name}
+        </h3>
+        <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5 font-medium leading-none">
+          {member.role}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
 const Team = () => {
-  const [activeIndex, setActiveIndex] = useState(2); // Start with someone in middle
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % teamData.length);
-  };
-
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + teamData.length) % teamData.length);
-  };
-
-  const activeMember = teamData[activeIndex];
+  // Distribute team members into 3 columns for desktop masonry/staggered layout
+  const columns = [[], [], []];
+  teamData.forEach((member, idx) => {
+    if (idx === 6) {
+      columns[1].push(member);
+    } else {
+      columns[idx % 3].push(member);
+    }
+  });
 
   return (
-    <div className="relative w-full overflow-hidden bg-[#f5f5f5] md:py-32 py-20 mt-22 font-sans isolate">
-      {/* 1. Backdrop Layers */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
-        {/* Giant Watermark Name */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`text-${activeIndex}`}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 0.7 }}
-            className="mb-[360px] md:mb-60 lg:mb-40 w-fit z-0 flex flex-col items-start"
-          >
-            {/* Giant Watermark */}
-            <div
-              className="
-                w-full text-center m-0 p-0 font-black text-slate-900 uppercase tracking-widest leading-none select-none opacity-20
-                text-[70px]
-                md:text-[140px]
-                lg:text-[240px]
-            "
+    <div className="relative w-full overflow-hidden py-20 lg:py-32 font-sans isolate bg-transparent">
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Side: Content */}
+          <div className="lg:col-span-5 flex flex-col justify-center">
+            <span className="text-xs font-black uppercase tracking-[0.2em] text-accent-fire mb-4">
+              Meet the Collective
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-heading dark:text-white leading-tight tracking-tight mb-6">
+              Our leading, strong & creative team
+            </h2>
+            <p className="text-base md:text-lg text-slate-600 dark:text-gray-400 leading-relaxed mb-8 max-w-lg">
+              These people work on making our product best.
+            </p>
+            <Link
+              to="/careers"
+              className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl shadow-[0_4px_14px_0_rgba(19,91,236,0.3)] hover:shadow-[0_6px_20px_0_rgba(19,91,236,0.4)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-fit cursor-pointer"
             >
-              {activeMember.name.split(" ")[0]}
-            </div>
+              Join our team
+            </Link>
+          </div>
 
-            {/* Left Title BELOW it */}
-            <div className="mt-2 ml-2 z-30">
-              <h2 className="text-[0px] md:text-2xl lg:text-3xl font-bold text-black max-w-[120px]">
-                {activeMember.name}
-              </h2>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Faded Background Portrait */}
-        <AnimatePresence mode="wait">
+          {/* Right Side: Masonry Card Grid */}
           <motion.div
-            key={`bg-${activeIndex}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.7 }}
-            className="absolute bottom-0 w-[500px] h-[500px] md:w-[600px] md:h-[600px] lg:w-[700px] lg:h-[700px] flex items-end justify-center z-10 mask-image-bottom"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                },
+              },
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="lg:col-span-7"
           >
-            <LazyImage
-              src={activeMember.bgImage}
-              alt={activeMember.name}
-              loading="eager"
-              className="object-contain min-h-[500px] max-h-[500px] md:min-h-[600px] md:max-h-[600px] lg:min-h-[700px] lg:max-h-[700px] object-bottom grayscale hover:grayscale-0 transition-all duration-700 pointer-events-auto cursor-pointer"
-              style={{
-                maskImage: "linear-gradient(to top, transparent, black 50%)",
-                WebkitMaskImage:
-                  "linear-gradient(to top, transparent, black 50%)",
-                transition: "opacity 0.45s ease, filter 1.2s ease",
-              }}
-            />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      <div className="w-full mx-auto px-8 z-20 h-[500px] flex items-end pointer-events-none">
-        {/* Active Member Role & Navigation Container */}
-        <div className="w-full flex relative justify-center items-center">
-          <motion.div
-            key={`info-${activeIndex}`}
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: -200, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="absolute -bottom-60 md:bottom-[-280px] left-1/2 -translate-x-1/2 w-[300px] md:w-[500px] lg:w-[820px]"
-          >
-            {/* Role */}
-            <div className="mb-4">
-              <p className="text-3xl lg:text-5xl font-bold text-gray-700 text-center uppercase pb-5">
-                {activeMember.role}
-              </p>
+            {/* Desktop & Tablet: Staggered 3-Column Layout */}
+            <div className="hidden sm:grid grid-cols-3 gap-6 lg:gap-8 items-start">
+              {/* Column 1 */}
+              <div className="flex flex-col gap-6 lg:gap-8 sm:translate-y-8">
+                {columns[0].map((member) => (
+                  <TeamCard key={member.name} member={member} />
+                ))}
+              </div>
+              {/* Column 2 - Shifted Upwards relative to left and right columns (staying at translateY-0) */}
+              <div className="flex flex-col gap-6 lg:gap-8">
+                {columns[1].map((member) => (
+                  <TeamCard key={member.name} member={member} />
+                ))}
+              </div>
+              {/* Column 3 */}
+              <div className="flex flex-col gap-6 lg:gap-8 sm:translate-y-8">
+                {columns[2].map((member) => (
+                  <TeamCard key={member.name} member={member} />
+                ))}
+              </div>
             </div>
-            {/* Navigation Buttons Capsule */}
-            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex items-center bg-primary rounded-full overflow-hidden shadow-xl pointer-events-auto">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handlePrev();
-                }}
-                className="py-2.5 px-5 hover:bg-primary/80 transition-colors text-white border-r border-primary/50"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleNext();
-                }}
-                className="py-2.5 px-5 hover:bg-primary/80 transition-colors text-white"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
+
+            {/* Mobile: 2-Column Grid */}
+            <div className="sm:hidden grid grid-cols-2 gap-4">
+              {teamData.map((member, idx) => (
+                <div
+                  key={member.name}
+                  className={idx === teamData.length - 1 ? "col-span-2" : ""}
+                >
+                  <TeamCard member={member} />
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
