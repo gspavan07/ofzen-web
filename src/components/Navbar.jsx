@@ -8,25 +8,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace("#", "");
-      // Small delay to ensure the DOM is ready, especially after navigation
-      const timeoutId = setTimeout(() => {
-        scrollToSection(null, id);
-      }, 100);
-      return () => clearTimeout(timeoutId);
-    }
-  }, [location.pathname, location.hash]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const scrollToSection = (e, id) => {
     if (e) e.preventDefault();
     setIsOpen(false); // Close mobile menu
@@ -55,6 +36,25 @@ const Navbar = () => {
       });
     }
   };
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      // Small delay to ensure the DOM is ready, especially after navigation
+      const timeoutId = setTimeout(() => {
+        scrollToSection(null, id);
+      }, 100);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [location.pathname, location.hash]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Team from "./Team";
 
@@ -220,8 +220,11 @@ const About = () => {
   const triggerRef = useRef(null);
   const sectionRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [orbitalOpacity, setOrbitalOpacity] = useState(0.25);
-  const [orbitalBlur, setOrbitalBlur] = useState(1.5);
+
+  // Deriving orbital opacity and blur from activeIndex to avoid synchronous setStates in useEffect
+  const progress = activeIndex / (steps.length - 1);
+  const orbitalOpacity = 0.2 + progress * 0.1;
+  const orbitalBlur = 1.5 - progress * 1.5;
 
   // Keyboard navigation for orbit
   useEffect(() => {
@@ -235,13 +238,6 @@ const About = () => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
-
-  // Simplified orbital effects for transitions
-  useEffect(() => {
-    const progress = activeIndex / (steps.length - 1);
-    setOrbitalOpacity(0.2 + progress * 0.1);
-    setOrbitalBlur(1.5 - progress * 1.5);
-  }, [activeIndex]);
 
   return (
     <div id="about" className="w-full relative silk-texture">

@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ghcr.io/gspavan07/ofzen-web:latest
+    container_name: ofzen-web-container
+    ports:
+      - "127.0.0.1:8083:80"
+    restart: unless-stopped

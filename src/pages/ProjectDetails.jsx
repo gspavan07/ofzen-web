@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useParams, useNavigate } from "react-router-dom";
 import LazyImage from "../components/LazyImage";
@@ -219,28 +219,17 @@ const ProjectDetails = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
 
-  // Find initial index by slug
-  const getInitialIndex = () => {
-    const index = projects.findIndex((p) => p.slug === slug);
-    return index !== -1 ? index : 0;
-  };
-
-  const [currentIndex, setCurrentIndex] = useState(getInitialIndex());
   const [isScrolling, setIsScrolling] = useState(false);
 
-  // Sync with URL slug
-  useEffect(() => {
-    const index = projects.findIndex((p) => p.slug === slug);
-    if (index !== -1 && index !== currentIndex) {
-      setCurrentIndex(index);
-    }
-  }, [slug]);
+  // Deriving currentIndex from URL params directly to prevent cascading renders
+  const currentIndex = projects.findIndex((p) => p.slug === slug) !== -1
+    ? projects.findIndex((p) => p.slug === slug)
+    : 0;
 
   const handleSwitch = (newIndex) => {
     if (newIndex < 0 || newIndex >= projects.length || isScrolling) return;
 
     setIsScrolling(true);
-    setCurrentIndex(newIndex);
     navigate(`/project/${projects[newIndex].slug}`, { replace: true });
 
     // Interaction lock
@@ -324,7 +313,7 @@ const ProjectDetails = () => {
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
-          onDragEnd={(e, { offset, velocity }) => {
+          onDragEnd={(e, { offset }) => {
             const swipe = offset.x;
             const threshold = 50;
             if (swipe < -threshold && currentIndex < projects.length - 1) {
