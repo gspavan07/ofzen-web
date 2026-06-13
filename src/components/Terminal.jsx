@@ -3,36 +3,199 @@ import { motion } from "framer-motion";
 
 const Terminal = () => {
   const lines = [
-    { text: "> initializing core_systems...", cmd: true, delay: 50 },
     {
-      text: "  [OK] memory_integrity_check",
+      text: "last login: Mon Jun 9 09:41:22 on ttys001",
       cmd: false,
-      color: "text-green-400/80",
-      delay: 15,
+      delay: 200,
+      render: () => <span className="text-white/40">last login: Mon Jun 9 09:41:22 on ttys001</span>,
     },
     {
-      text: "  [OK] neural_link_established",
+      text: "",
       cmd: false,
-      color: "text-green-400/80",
-      delay: 15,
+      delay: 50,
+      render: () => <div className="h-2"></div>,
     },
-    { text: "> connecting to main_node...", cmd: true, delay: 40 },
-    { text: "  ... handshake_verified", cmd: false, delay: 20 },
-    { text: "  ... encryption_protocol: AES-256", cmd: false, delay: 20 },
-    { text: "> deploying services...", cmd: true, delay: 40 },
     {
-      text: "  [INFO] scaling_instances: 50+",
-      cmd: false,
-      color: "text-blue-400/80",
+      text: "git clone https://github.com/ofzen/your-idea.git",
+      cmd: true,
       delay: 20,
     },
     {
-      text: "  [INFO] latency: <12ms",
+      text: "Cloning into 'your-idea'...",
       cmd: false,
-      color: "text-blue-400/80",
+      delay: 150,
+      render: () => (
+        <span className="text-white/60">
+          Cloning into <span className="text-yellow-400">'your-idea'</span>...
+        </span>
+      ),
+    },
+    {
+      text: "remote: Enumerating objects: 1, done.",
+      cmd: false,
+      delay: 100,
+      render: () => <span className="text-white/60">remote: Enumerating objects: 1, done.</span>,
+    },
+    {
+      text: "✓ Receiving objects: 100% – idea locked in.",
+      cmd: false,
+      delay: 300,
+      render: () => (
+        <span className="text-white/60">
+          <span className="text-emerald-400">✓</span> Receiving objects: 100% – idea locked in.
+        </span>
+      ),
+    },
+    {
+      text: "",
+      cmd: false,
+      delay: 50,
+      render: () => <div className="h-2"></div>,
+    },
+    {
+      text: "npm install design ux engineering strategy",
+      cmd: true,
       delay: 20,
     },
-    { text: "> system_ready", cmd: true, delay: 40, color: "text-green-400" },
+    {
+      text: "added 4 expertise modules ✓",
+      cmd: false,
+      delay: 150,
+      render: () => (
+        <span className="text-white/60">
+          added <span className="text-yellow-400 font-bold">4</span> expertise modules <span className="text-emerald-400 font-bold">✓</span>
+        </span>
+      ),
+    },
+    {
+      text: "resolved 0 conflicts – zero friction guaranteed.",
+      cmd: false,
+      delay: 300,
+      render: () => (
+        <span className="text-white/60">
+          resolved <span className="text-yellow-400 font-bold">0</span> conflicts – <span className="text-emerald-400 font-bold">zero friction guaranteed.</span>
+        </span>
+      ),
+    },
+    {
+      text: "",
+      cmd: false,
+      delay: 50,
+      render: () => <div className="h-2"></div>,
+    },
+    {
+      text: "./build.sh --platform web,mobile --client startup",
+      cmd: true,
+      delay: 20,
+    },
+    {
+      text: "► Compiling React + Next.js... done",
+      cmd: false,
+      delay: 100,
+      render: () => (
+        <span className="text-white/60">
+          <span className="text-blue-500 font-black">►</span> Compiling React + Next.js... <span className="text-emerald-400 font-bold">done</span>
+        </span>
+      ),
+    },
+    {
+      text: "► Bundling mobile (iOS + Android)... done",
+      cmd: false,
+      delay: 100,
+      render: () => (
+        <span className="text-white/60">
+          <span className="text-blue-500 font-black">►</span> Bundling mobile (iOS + Android)... <span className="text-emerald-400 font-bold">done</span>
+        </span>
+      ),
+    },
+    {
+      text: "► Running UI/UX polish pass... done",
+      cmd: false,
+      delay: 150,
+      render: () => (
+        <span className="text-white/60">
+          <span className="text-blue-500 font-black">►</span> Running UI/UX polish pass... <span className="text-emerald-400 font-bold">done</span>
+        </span>
+      ),
+    },
+    {
+      text: "► Build size: lean. Performance score: 98/100",
+      cmd: false,
+      delay: 300,
+      render: () => (
+        <span className="text-white/60">
+          <span className="text-blue-500 font-black">►</span> Build size: <span className="text-emerald-400 font-bold">lean</span>. Performance score: <span className="text-emerald-400 font-bold">98/100</span>
+        </span>
+      ),
+    },
+    {
+      text: "",
+      cmd: false,
+      delay: 50,
+      render: () => <div className="h-2"></div>,
+    },
+    {
+      text: "./deploy.sh --target production --region IN",
+      cmd: true,
+      delay: 20,
+    },
+    {
+      text: "► Health check... ✓ passing",
+      cmd: false,
+      delay: 150,
+      render: () => (
+        <span className="text-white/60">
+          <span className="text-blue-500 font-black">►</span> Health check... <span className="text-emerald-400 font-bold">✓ passing</span>
+        </span>
+      ),
+    },
+    {
+      text: "► Latency: <12ms · Uptime: 99.9% · Instances: 50+",
+      cmd: false,
+      delay: 150,
+      render: () => (
+        <span className="text-white/60">
+          <span className="text-blue-500 font-black">►</span> Latency: <span className="text-emerald-400 font-bold">&lt;12ms</span> · Uptime: <span className="text-emerald-400 font-bold">99.9%</span> · Instances: 50+
+        </span>
+      ),
+    },
+    {
+      text: "✓ Deployed to production. Your users won't know what hit them.",
+      cmd: false,
+      delay: 400,
+      render: () => (
+        <div className="flex flex-col">
+          <span className="text-emerald-400 font-bold">
+            ✓ Deployed to production. <span className="text-white/40 font-normal">Your users won't know what hit them.</span>
+          </span>
+        </div>
+      ),
+    },
+    {
+      text: "",
+      cmd: false,
+      delay: 50,
+      render: () => <div className="h-2"></div>,
+    },
+    {
+      text: "open https://ofzen.in # ready to build yours?",
+      cmd: true,
+      delay: 20,
+      renderText: (typedText) => {
+        const commentIndex = typedText.indexOf("#");
+        if (commentIndex !== -1) {
+          const cmdPart = typedText.substring(0, commentIndex);
+          const commentPart = typedText.substring(commentIndex);
+          return (
+            <span>
+              {cmdPart}
+              <span className="text-white/40">{commentPart}</span>
+            </span>
+          );
+        }
+        return typedText;
+      }
+    },
     { text: "_", cmd: false, infinite: true },
   ];
 
@@ -46,10 +209,24 @@ const Terminal = () => {
     const currentLine = lines[currentLineIndex];
 
     if (currentLine.infinite) {
-      // Blinking cursor logic could go here or be handled by CSS animation
       return;
     }
 
+    // If it's an output line (not a command), render it immediately
+    if (!currentLine.cmd) {
+      setDisplayedLines((prev) => {
+        const newLines = [...prev];
+        newLines[currentLineIndex] = { ...currentLine };
+        return newLines;
+      });
+      const timeout = setTimeout(() => {
+        setCurrentLineIndex((prev) => prev + 1);
+        setCharIndex(0);
+      }, currentLine.delay !== undefined ? currentLine.delay : 100);
+      return () => clearTimeout(timeout);
+    }
+
+    // Typing behavior for commands
     if (charIndex < currentLine.text.length) {
       const timeout = setTimeout(() => {
         setDisplayedLines((prev) => {
@@ -70,38 +247,49 @@ const Terminal = () => {
       const timeout = setTimeout(() => {
         setCurrentLineIndex((prev) => prev + 1);
         setCharIndex(0);
-      }, 300);
+      }, 500); // pause after command typing finished
       return () => clearTimeout(timeout);
     }
   }, [currentLineIndex, charIndex]);
 
   return (
-    <div className="w-full h-[400px] max-w-[600px] bg-[#1e1e1e]/90 backdrop-blur-xl rounded-xl shadow-2xl border border-white/10 flex flex-col overflow-hidden font-mono text-xs sm:text-sm">
+    <div className="w-full h-[470px] max-w-[550px] bg-[#1a1c23]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 flex flex-col overflow-hidden font-mono text-[10.5px] sm:text-xs leading-relaxed">
       {/* Header */}
-      <div className="h-8 bg-white/5 border-b border-white/5 flex items-center px-4 gap-2">
+      <div className="h-10 bg-[#16181f] border-b border-white/5 flex items-center px-4 gap-2">
         <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
         <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
         <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
         <div className="flex-1 text-center text-white/30 text-[10px] font-semibold tracking-wider">
-          Terminal
+          ofzen — bash
         </div>
       </div>
 
       {/* Content */}
-      <div className="flex-1 p-6 text-white/80 overflow-hidden relative">
+      <div className="flex-1 p-6 text-white/80 overflow-y-auto relative scrollbar-none">
         <div className="absolute inset-0 bg-linear-to-b from-transparent to-black/20 pointer-events-none"></div>
 
-        <div className="flex flex-col gap-1 z-10 relative">
+        <div className="flex flex-col gap-1.5 z-10 relative">
           {displayedLines.map((line, i) => (
             <div
               key={i}
-              className={`${line.cmd ? "mt-2" : ""} ${line.color || ""}`}
+              className={`${line.cmd ? "mt-1" : ""} ${line.color || ""}`}
             >
-              {line.text}
-              {i === currentLineIndex && i !== lines.length - 1 && (
-                <span className="inline-block w-2 h-4 bg-white/50 align-middle ml-1 animate-pulse"></span>
+              {line.cmd && (
+                <span className="text-[#10b981] font-bold mr-2">
+                  ofzen<span className="text-white/40">@studio</span>{" "}
+                  <span className="text-white/60">~ $</span>
+                </span>
               )}
-              {line.infinite && <span className="animate-pulse">_</span>}
+              
+              {line.cmd ? (
+                line.renderText ? line.renderText(line.text) : line.text
+              ) : (
+                line.render ? line.render() : line.text
+              )}
+
+              {i === currentLineIndex && (
+                <span className="inline-block w-2 h-4 bg-emerald-400 align-middle ml-1 animate-pulse"></span>
+              )}
             </div>
           ))}
         </div>

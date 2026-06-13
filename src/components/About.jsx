@@ -93,70 +93,38 @@ const steps = [
   },
 ];
 
-const OrbitItem = ({ step, index, activeIndex }) => {
+const OrbitItem = ({ step, index, activeIndex, isMobile }) => {
   const totalSteps = 8;
   // Normalized position relative to active index
   const currentPos = (index - activeIndex + totalSteps) % totalSteps;
 
   const positions = {
-    0: {
-      transform: "translate3d(-50%, 120px, 350px) scale(1.3)",
-      opacity: 1,
-      blur: 0,
-      zIndex: 100,
-    },
-    1: {
-      transform: "translate3d(280px, 40px, 150px) scale(1)",
-      opacity: 0.8,
-      blur: 0.3,
-      zIndex: 90,
-    },
-    2: {
-      transform: "translate3d(450px, -60px, -100px) scale(0.85)",
-      opacity: 0.6,
-      blur: 0.8,
-      zIndex: 80,
-    },
-    3: {
-      transform: "translate3d(200px, -160px, -250px) scale(0.7)",
-      opacity: 0.4,
-      blur: 1.2,
-      zIndex: 70,
-    },
-    4: {
-      transform: "translate3d(-50%, -200px, -350px) scale(0.6)",
-      opacity: 0.3,
-      blur: 1.5,
-      zIndex: 60,
-    },
-    5: {
-      transform: "translate3d(-350px, -160px, -250px) scale(0.7)",
-      opacity: 0.4,
-      blur: 1.2,
-      zIndex: 70,
-    },
-    6: {
-      transform: "translate3d(-550px, -60px, -100px) scale(0.85)",
-      opacity: 0.6,
-      blur: 0.8,
-      zIndex: 80,
-    },
-    7: {
-      transform: "translate3d(-400px, 40px, 150px) scale(1)",
-      opacity: 0.8,
-      blur: 0.3,
-      zIndex: 90,
-    },
+    0: { x: 0, y: 120, z: 300, scale: 1.25, opacity: 1, blur: 0, zIndex: 100 },
+    1: { x: 280, y: 40, z: 150, scale: 0.9, opacity: 0.8, blur: 0.3, zIndex: 90 },
+    2: { x: 450, y: -60, z: -100, scale: 0.75, opacity: 0.6, blur: 0.8, zIndex: 80 },
+    3: { x: 200, y: -160, z: -250, scale: 0.65, opacity: 0.4, blur: 1.2, zIndex: 70 },
+    4: { x: 0, y: -200, z: -350, scale: 0.55, opacity: 0.3, blur: 1.5, zIndex: 60 },
+    5: { x: -200, y: -160, z: -250, scale: 0.65, opacity: 0.4, blur: 1.2, zIndex: 70 },
+    6: { x: -450, y: -60, z: -100, scale: 0.75, opacity: 0.6, blur: 0.8, zIndex: 80 },
+    7: { x: -280, y: 40, z: 150, scale: 0.9, opacity: 0.8, blur: 0.3, zIndex: 90 },
   };
 
   const style = positions[currentPos];
   const isActive = currentPos === 0;
 
+  const scaleFactor = isMobile ? 0.38 : 1.0;
+  const xOffset = style.x * scaleFactor;
+  const yOffset = style.y * scaleFactor;
+  const zOffset = style.z * scaleFactor;
+
   return (
     <motion.div
       className="absolute left-1/2 top-1/2"
       animate={{
-        transform: style.transform,
+        x: xOffset,
+        y: yOffset,
+        z: zOffset,
+        scale: style.scale,
         opacity: style.opacity,
         filter: `blur(${style.blur}px)`,
       }}
@@ -171,7 +139,10 @@ const OrbitItem = ({ step, index, activeIndex }) => {
         transformStyle: "preserve-3d",
       }}
     >
-      <div className="relative flex flex-col items-center">
+      <div 
+        className="relative flex flex-col items-center"
+        style={{ transform: "translate(-50%, -50%)" }}
+      >
         {/* ICON (FLOATING) */}
         {/* ICON (TRUE FLOATING) */}
         <div
@@ -220,6 +191,16 @@ const About = () => {
   const triggerRef = useRef(null);
   const sectionRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Deriving orbital opacity and blur from activeIndex to avoid synchronous setStates in useEffect
   const progress = activeIndex / (steps.length - 1);
@@ -266,26 +247,23 @@ const About = () => {
           ref={sectionRef}
           className="w-full flex items-center justify-center bg-transparent"
         >
-          <div className="max-w-[1400px] w-full relative  flex flex-col justify-center items-center gap-0 px-4 overflow-visible">
+          <div className="max-w-[1400px] w-full relative flex flex-col justify-center items-center gap-0 px-4 overflow-visible">
             {/* The Orbit Visualization */}
             <div
-              className="relative w-full h-[200px] md:h-[450px] scale-[0.32] md:scale-75 flex items-center justify-center mb-[-80px] md:mb-[-100px] overflow-visible"
+              className="relative w-full h-[220px] md:h-[450px] flex items-center justify-center overflow-visible"
               style={{
-                perspective:
-                  typeof window !== "undefined" && window.innerWidth < 768
-                    ? "500px"
-                    : "1000px",
+                perspective: isMobile ? "500px" : "1000px",
                 transformStyle: "preserve-3d",
               }}
             >
-              {/* CORE Node - Shifted Up */}
-              <div className="relative z-20 size-32 lg:size-40 rounded-full glass-card flex items-center justify-center shadow-[0_0_50px_rgba(19,91,236,0.1)] border border-primary/5 -translate-y-8">
+              {/* CORE Node */}
+              <div className="relative z-20 size-24 md:size-36 lg:size-40 rounded-full glass-card flex items-center justify-center shadow-[0_0_50px_rgba(19,91,236,0.1)] border border-primary/5 -translate-y-4 md:-translate-y-8">
                 <div className="absolute inset-0 rounded-full bg-primary/5 blur-2xl animate-pulse"></div>
                 <div className="text-primary flex flex-col items-center relative z-10">
-                  <span className="material-symbols-outlined text-3xl lg:text-5xl">
+                  <span className="material-symbols-outlined text-2xl md:text-3xl lg:text-5xl">
                     deployed_code
                   </span>
-                  <span className="text-[8px] lg:text-[10px] uppercase font-black tracking-[0.3em] mt-2">
+                  <span className="text-[7px] md:text-[8px] lg:text-[10px] uppercase font-black tracking-[0.3em] mt-1 md:mt-2">
                     CORE
                   </span>
                 </div>
@@ -293,8 +271,10 @@ const About = () => {
 
               {/* Orbital Ring */}
               <div
-                className="absolute top-1/2 left-1/2 w-[1100px] h-[450px] border-2 border-transparent rounded-[50%] transition-all duration-300"
+                className="absolute top-1/2 left-1/2 border-2 border-transparent rounded-[50%] transition-all duration-300"
                 style={{
+                  width: isMobile ? "400px" : "1100px",
+                  height: isMobile ? "160px" : "450px",
                   transform: "translate(-50%, -50%) rotateX(70deg)",
                   background:
                     "linear-gradient(90deg, rgba(255,95,56,0.3), rgba(255,56,162,0.3), rgba(19,91,236,0.3))",
@@ -315,11 +295,12 @@ const About = () => {
                   index={index}
                   step={step}
                   activeIndex={activeIndex}
+                  isMobile={isMobile}
                 />
               ))}
             </div>
 
-            <div className="flex flex-col gap-4 items-center w-full max-w-2xl mx-auto z-30 mt-64 md:mt-30 relative">
+            <div className="flex flex-col gap-4 items-center w-full max-w-2xl mx-auto z-30 mt-24 md:mt-30 relative">
               {/* Info Panel - Subtle Glass */}
               <div
                 className="w-full rounded-2xl p-4 lg:p-6 relative overflow-visible shadow-[0_10px_30px_rgba(0,0,0,0.06)] max-w-md border border-primary/5"

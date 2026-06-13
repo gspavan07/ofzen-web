@@ -15,6 +15,7 @@ const projects = [
     image: Koyya,
     width: "w-[85vw] md:w-[750px]",
     slug: "koyya-enterprises",
+    websiteUrl: "https://koyya.netlify.app/",
   },
   {
     title: "Code Tracker",
@@ -23,6 +24,7 @@ const projects = [
     image: CodeTracker,
     width: "w-[85vw] md:w-[750px]",
     slug: "code-tracker",
+    websiteUrl: "https://ct.ofzen.in/",
   },
   {
     title: "SKC Caterers",
@@ -31,6 +33,7 @@ const projects = [
     image: SKC,
     width: "w-[85vw] md:w-[750px]",
     slug: "skc-caterers",
+    websiteUrl: "https://www.skconline.in/",
   },
   {
     title: "Unipilot",
@@ -39,6 +42,7 @@ const projects = [
     image: Unipilot,
     width: "w-[85vw] md:w-[750px]",
     slug: "unipilot",
+    websiteUrl: "https://www.unipilot.in/",
   },
   {
     title: "Meat Box",
@@ -178,18 +182,35 @@ const Work = () => {
               </div>
               <div className="mt-4 px-2 flex justify-between items-start">
                 <div>
-                  <h3 className="text-lg md:text-3xl font-bold text-black leading-tight group-hover/card:text-primary transition-colors">
+                  <h3 className="text-lg md:text-3xl font-black text-heading leading-tight group-hover/card:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-subtext dark:text-gray-600 text-sm font-medium mt-2 uppercase tracking-wider">
+                  <p className="text-subtext dark:text-gray-700 text-xs md:text-sm font-medium mt-2 uppercase tracking-wider">
                     {project.category}
                   </p>
-                </div>
-                <button className="size-12 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover/card:bg-primary group-hover/card:text-white transition-all duration-300">
-                  <span className="material-symbols-outlined text-2xl">
-                    arrow_outward
+                  <span className="inline-flex items-center gap-1 text-xs md:text-sm font-bold text-primary mt-3 group-hover/card:underline">
+                    View Project <span className="transition-transform duration-300 transform group-hover/card:translate-x-1">→</span>
                   </span>
-                </button>
+                </div>
+                {project.websiteUrl ? (
+                  <a
+                    href={project.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="size-12 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
+                  >
+                    <span className="material-symbols-outlined text-2xl">
+                      arrow_outward
+                    </span>
+                  </a>
+                ) : (
+                  <button className="size-12 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover/card:bg-primary group-hover/card:text-white transition-all duration-300">
+                    <span className="material-symbols-outlined text-2xl">
+                      arrow_outward
+                    </span>
+                  </button>
+                )}
               </div>
             </motion.div>
           ))}
@@ -210,8 +231,8 @@ const Work = () => {
                 {item.icon}
               </span>
             </div>
-            <h4 className="text-xl font-bold text-black">{item.title}</h4>
-            <p className="text-sm text-subtext dark:text-gray-600 leading-relaxed max-w-[280px]">
+            <h4 className="text-xl font-bold text-heading">{item.title}</h4>
+            <p className="text-sm text-subtext dark:text-gray-700 leading-relaxed max-w-[280px]">
               Crafting high-performance digital solutions with surgical
               precision and artistic intent.
             </p>

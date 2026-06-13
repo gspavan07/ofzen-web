@@ -2,7 +2,7 @@ import React from 'react';
 
 const TechStack = () => {
     const techs = [
-        "REACT", "NEXT.JS", "PYTHON", "AWS", "TYPESCRIPT", "FIGMA", "DOCKER", "RUST"
+        "REACT", "NEXT.JS", "PYTHON", "AWS", "TYPESCRIPT", "FIGMA", "DOCKER", "RUST", "NODEJS", "MONGODB", "SQL", "HTML", "REACTNATIVE", "JAVASCRIPT"
     ];
 
     return (
